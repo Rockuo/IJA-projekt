@@ -1,2 +1,2 @@
 # IJA-projekt
-Jsem tu trololo
+# plán projektu :P
