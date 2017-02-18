@@ -11,10 +11,10 @@
    <children>
       <MenuBar prefHeight="25.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Klondike">
+          <Menu mnemonicParsing="false" text="Game">
             <items>
-              <MenuItem mnemonicParsing="false" text="Create New Klondike" />
-                  <MenuItem mnemonicParsing="false" text="Open Klondike" />
+              <MenuItem mnemonicParsing="false" text="Create New Game" />
+                  <MenuItem mnemonicParsing="false" text="Open Game" />
                   <MenuItem mnemonicParsing="false" text="Varianta" />
                   <MenuItem mnemonicParsing="false" text="Štatistika" />
                   <MenuItem mnemonicParsing="false" text="Exit" />
