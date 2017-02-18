@@ -37,8 +37,8 @@ import javafx.scene.layout.VBox;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class GameControl extends VBox {
-    public GameControl() {
+public class GameController extends VBox {
+    public GameController() {
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
 //        fxmlLoader.setRoot(this);
 //        fxmlLoader.setController(this);
