@@ -1,4 +1,4 @@
-package Game;
+package Klondike;
 
 public class Controller {
     public void initialize() {
