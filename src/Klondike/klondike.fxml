@@ -7,48 +7,41 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane fx:controller="Klondike.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="Klondike" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Klondike.MainController">
     <children>
-        <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="360.0" layoutY="292.0" AnchorPane.bottomAnchor="0.0"
-                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ImageView fitHeight="768.0" fitWidth="1024.0" layoutX="360.0" layoutY="292.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <image>
-                <Image url="@../Images/background.jpg"/>
+                <Image url="@../Images/background.jpg" />
             </image>
         </ImageView>
-        <MenuBar prefHeight="25.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                 AnchorPane.topAnchor="0.0">
+        <MenuBar fx:id="menu" prefHeight="25.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Create New Game" onAction="#newGameHandler"/>
-                        <MenuItem mnemonicParsing="false" text="Open Game" onAction="#openGameHandler"/>
-                        <MenuItem mnemonicParsing="false" text="Varianta" onAction="#variantHandler"/>
-                        <MenuItem mnemonicParsing="false" text="Štatistika" onAction="#statisticHandler"/>
-                        <MenuItem mnemonicParsing="false" text="Exit" onAction="#exitHandler"/>
+                        <MenuItem mnemonicParsing="false" onAction="#newGameHandler" text="Create New Game" />
+                        <MenuItem mnemonicParsing="false" onAction="#openGameHandler" text="Open Game" />
+                        <MenuItem mnemonicParsing="false" onAction="#variantHandler" text="Varianta" />
+                        <MenuItem mnemonicParsing="false" onAction="#statisticHandler" text="Štatistika" />
+                        <MenuItem mnemonicParsing="false" onAction="#exitHandler" text="Exit" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="View">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Cards" onAction="#cardsHandler"/>
+                        <MenuItem mnemonicParsing="false" onAction="#cardsHandler" text="Cards" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" onAction="#aboutHandler"/>
+                        <MenuItem mnemonicParsing="false" onAction="#aboutHandler" text="About" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="...">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About"/>
+                        <MenuItem mnemonicParsing="false" text="About" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane layoutX="3.0" layoutY="33.0" prefHeight="732.0" prefWidth="1011.0" AnchorPane.bottomAnchor="0.0"
-                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0"
-                    fx:id="gamePane"
-        />
+        <AnchorPane fx:id="gamePane" layoutX="3.0" layoutY="33.0" prefHeight="732.0" prefWidth="1011.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
     </children>
 </AnchorPane>
