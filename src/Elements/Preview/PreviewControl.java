@@ -42,7 +42,7 @@ import java.io.IOException;
  */
 public class PreviewControl extends VBox {
     public PreviewControl() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
 //        fxmlLoader.setRoot(this);
 //        fxmlLoader.setController(this);
 //
