@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Elements.Game.Preview;
+package Elements.Game;
 
 import javafx.scene.layout.VBox;
 
