@@ -4,21 +4,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane fx:id="game" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane fx:id="column1" layoutX="72.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="column2" layoutX="202.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="column3" layoutX="332.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="column4" layoutX="462.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="column5" layoutX="592.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="column6" layoutX="722.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="column7" layoutX="852.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
-      <AnchorPane fx:id="pack" layoutX="72.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10;" />
-      <AnchorPane fx:id="preview" layoutX="202.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10;" />
-      <AnchorPane fx:id="goal1" layoutX="462.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
-      <AnchorPane fx:id="goal2" layoutX="592.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
-      <AnchorPane fx:id="goal3" layoutX="722.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
-      <AnchorPane fx:id="goal4" layoutX="852.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
-   </children>
-</AnchorPane>
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml">
+   <AnchorPane fx:id="game" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <AnchorPane fx:id="column1" layoutX="72.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="column2" layoutX="202.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="column3" layoutX="332.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="column4" layoutX="462.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="column5" layoutX="592.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="column6" layoutX="722.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="column7" layoutX="852.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0" />
+         <AnchorPane fx:id="pack" layoutX="72.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10;" />
+         <AnchorPane fx:id="preview" layoutX="202.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10;" />
+         <AnchorPane fx:id="goal1" layoutX="462.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
+         <AnchorPane fx:id="goal2" layoutX="592.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
+         <AnchorPane fx:id="goal3" layoutX="722.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
+         <AnchorPane fx:id="goal4" layoutX="852.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff;" />
+      </children>
+   </AnchorPane>
+</fx:root>
