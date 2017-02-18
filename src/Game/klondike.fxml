@@ -7,35 +7,29 @@
 <?import javafx.scene.control.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <MenuBar prefHeight="25.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Game">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Create New Game" />
-                  <MenuItem mnemonicParsing="false" text="Open Game" />
-                  <MenuItem mnemonicParsing="false" text="Varianta" />
-                  <MenuItem mnemonicParsing="false" text="Štatistika" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="View">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Cards" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="...">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-        </menus>
-      </MenuBar>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0"
+            prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Game.Controller">
+    <children>
+        <MenuBar prefHeight="25.0" prefWidth="1024.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Game">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </children>
 </AnchorPane>

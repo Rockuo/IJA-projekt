@@ -30,26 +30,26 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Elements.customcontrolexample;
+package Elements.Pack;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.VBox;
 
-public class CustomControlExample extends Application {
-    @Override
-    public void start(Stage stage) throws Exception {
-        CustomControl customControl = new CustomControl();
-        customControl.setText("Hello!");
-        
-        stage.setScene(new Scene(customControl));
-        stage.setTitle("Custom Control");
-        stage.setWidth(300);
-        stage.setHeight(200);
-        stage.show();
-    }
-    
-    public static void main(String[] args) {
-        launch(args);
+import java.io.IOException;
+
+/**
+ * Sample custom control hosting a text field and a button.
+ */
+public class PackController extends VBox {
+    public PackController() {
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pack.fxml"));
+//        fxmlLoader.setRoot(this);
+//        fxmlLoader.setController(this);
+//
+//        try {
+//            fxmlLoader.load();
+//        } catch (IOException exception) {
+//            throw new RuntimeException(exception);
+//        }
     }
 }
