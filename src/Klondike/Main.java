@@ -14,7 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("Klondike Solitaire");
         primaryStage.setScene(new Scene(root, 1024, 768));
         primaryStage.show();
-        Controller a = new Controller();
+        MainController a = new MainController();
     }
 
 

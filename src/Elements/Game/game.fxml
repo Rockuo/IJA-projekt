@@ -3,5 +3,5 @@
 <?import javafx.scene.layout.VBox?>
 <fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"
          fx:controller="Elements.Preview.PreviewControl">
-
+<!--todo přidat menu pro konkretní hru a platno pro vkladaní herních prvků viz karty atp-->
 </fx:root>

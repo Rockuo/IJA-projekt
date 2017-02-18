@@ -1,6 +1,6 @@
 package Klondike;
 
-public class Controller {
+public class MainController {
     public void initialize() {
 
     }
