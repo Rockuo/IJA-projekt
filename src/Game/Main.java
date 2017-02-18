@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("klondike.fxml"));
         primaryStage.setTitle("Klondike Solitaire");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 1024, 768));
         primaryStage.show();
         Controller a = new Controller();
     }
