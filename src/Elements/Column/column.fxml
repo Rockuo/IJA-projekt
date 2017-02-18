@@ -6,6 +6,4 @@
 <?import javafx.scene.layout.*?>
 
 
-<fx:root prefHeight="400.0" prefWidth="100.0" type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Elements.Column.ColumnController">
-
-</fx:root>
+<AnchorPane fx:id="column" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" />
