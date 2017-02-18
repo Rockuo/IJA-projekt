@@ -30,18 +30,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Elements.Preview;
+package Elements.Game.Preview;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PreviewControl extends VBox {
-    public PreviewControl() {
+public class GameControl extends VBox {
+    public GameControl() {
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
 //        fxmlLoader.setRoot(this);
 //        fxmlLoader.setController(this);
