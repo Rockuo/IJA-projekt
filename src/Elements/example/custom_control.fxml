@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml"> 
-    <TextField fx:id="textField"/>
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml">
+    <!--<TextField fx:id="textField"/>-->
     <Button text="Click Me" onAction="#doSomething"/>
 </fx:root>

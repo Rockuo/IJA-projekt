@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
  * Sample custom control hosting a text field and a button.
  */
 public class CustomControl extends VBox {
-    @FXML private TextField textField;
+//    @FXML private TextField textField;
 
     public CustomControl() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("custom_control.fxml"));
@@ -26,19 +26,19 @@ public class CustomControl extends VBox {
             throw new RuntimeException(exception);
         }
     }
-    
-    public String getText() {
-        return textProperty().get();
-    }
-    
-    public void setText(String value) {
-        textProperty().set(value);
-    }
-    
-    private StringProperty textProperty() {
-        return textField.textProperty();                
-    }
-        
+//
+//    public String getText() {
+//        return textProperty().get();
+//    }
+//
+//    public void setText(String value) {
+//        textProperty().set(value);
+//    }
+//
+//    private StringProperty textProperty() {
+//        return textField.textProperty();
+//    }
+//
     @FXML
     protected void doSomething() {
         System.out.println("The button was clicked!");

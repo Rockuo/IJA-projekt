@@ -32,7 +32,10 @@
 
 package Elements.Goal;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -40,16 +43,12 @@ import java.io.IOException;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class GoalController extends VBox {
-    public GoalController() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("goal.fxml"));
-//        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
+public class GoalController {
+
+    @FXML
+    private AnchorPane goal;
+
+    public void initialize() {
+
     }
 }

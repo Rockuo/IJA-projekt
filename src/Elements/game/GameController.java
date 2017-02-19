@@ -30,23 +30,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Elements.Game;
+package Elements.game;
 
+
+import java.io.IOException;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class GameController extends VBox {
+public class GameController extends AnchorPane {
+
     public GameController() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
 //        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
+        fxmlLoader.setController(this);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
+
 }

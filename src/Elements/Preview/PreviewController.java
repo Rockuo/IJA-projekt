@@ -32,7 +32,9 @@
 
 package Elements.Preview;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -40,16 +42,12 @@ import java.io.IOException;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PreviewControl extends VBox {
-    public PreviewControl() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
-//        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
+public class PreviewController extends VBox {
+
+    @FXML
+    private AnchorPane preview;
+
+    public void initialize() {
+
     }
 }

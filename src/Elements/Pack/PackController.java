@@ -32,7 +32,9 @@
 
 package Elements.Pack;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -40,16 +42,11 @@ import java.io.IOException;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PackController extends VBox {
-    public PackController() {
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pack.fxml"));
-//        fxmlLoader.setRoot(this);
-//        fxmlLoader.setController(this);
-//
-//        try {
-//            fxmlLoader.load();
-//        } catch (IOException exception) {
-//            throw new RuntimeException(exception);
-//        }
+public class PackController {
+    @FXML
+    private AnchorPane pack;
+
+    public void initialize(){
+
     }
 }
