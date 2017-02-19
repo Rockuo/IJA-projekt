@@ -42,22 +42,15 @@ import java.io.IOException;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class CardController {
-
-    @FXML
-    private AnchorPane card;
+public class CardController extends AnchorPane{
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
         fxmlLoader.setController(this);
-
+        fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-    }
-
-    public AnchorPane getElement(){
-        return this.card;
     }
 }

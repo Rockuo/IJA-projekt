@@ -6,6 +6,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<fx:root type="javafx.scene.layout.AnchorPane" fx:id="card" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="150.0" prefWidth="100.0" style="-fx-background-radius: 10;"
             xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"/>
