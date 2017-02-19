@@ -30,22 +30,19 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Elements.Goal;
+package Elements.preview;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class GoalController extends AnchorPane{
-    public GoalController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("goal.fxml"));
+public class PreviewController extends AnchorPane{
+    public PreviewController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {
