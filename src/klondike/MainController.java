@@ -1,6 +1,6 @@
 package klondike;
 
-import Elements.game.GameController;
+import elements.game.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;

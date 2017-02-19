@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package Elements.pack;
+package elements.pack;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
