@@ -9,7 +9,7 @@
 <?import elements.pack.PackController?>
 <?import elements.preview.PreviewController?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" fx:id="game" style="-fx-background-color: red" maxHeight="-Infinity"
+<fx:root type="javafx.scene.layout.AnchorPane" fx:id="game" maxHeight="-Infinity"
          maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="1024.0"
          xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
