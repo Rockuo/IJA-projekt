@@ -1,4 +1,4 @@
-package Klondike;
+package klondike;
 
 import Elements.game.GameController;
 import javafx.event.ActionEvent;
