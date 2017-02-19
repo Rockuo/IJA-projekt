@@ -37,7 +37,6 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 /**
  * Sample custom control hosting a text field and a button.
@@ -46,7 +45,7 @@ public class GameController extends AnchorPane {
 
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
-//        fxmlLoader.setRoot(this);
+        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         try {

@@ -42,12 +42,15 @@ import java.io.IOException;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class ColumnController {
-
-    @FXML
-    private AnchorPane column;
-
-    public void initialize() {
-        System.out.print("aaa\n");
+public class ColumnController extends AnchorPane{
+    public ColumnController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("column.fxml"));
+        fxmlLoader.setController(this);
+        fxmlLoader.setRoot(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
     }
 }
