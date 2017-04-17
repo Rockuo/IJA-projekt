@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package elements.column;
+package gui.elements.goal;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -40,9 +40,9 @@ import java.io.IOException;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class ColumnController extends AnchorPane{
-    public ColumnController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("column.fxml"));
+public class GoalController extends AnchorPane{
+    public GoalController() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("goal.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {

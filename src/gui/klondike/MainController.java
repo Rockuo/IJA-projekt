@@ -1,6 +1,6 @@
-package klondike;
+package gui.klondike;
 
-import elements.game.GameController;
+import gui.elements.game.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -38,6 +38,7 @@ public class MainController {
 //    }
 
     public void newGameHandler(ActionEvent event) {
+        System.out.println("bbb");
         this.gameCount++;
         if (this.gameCount > 1) {
             this.expand();

@@ -1,5 +1,5 @@
 
-package elements.example;
+package gui.elements.example;
 
 import java.io.IOException;
 
