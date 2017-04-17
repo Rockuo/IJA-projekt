@@ -15,11 +15,11 @@ public class CardDeckB implements CardDeck {
     private int maxSize;
     private Card.Color color = null;
     protected ArrayList<Map<String,Object>> memory;
-    protected static final int  memoryMax = 1;
+    protected static final int  memoryMax = 6;
 
     public CardDeckB(){
-        this.stack = new Stack<Card>();
-        this.maxSize = 13;
+        this.stack = new Stack<>();
+        this.maxSize=52;
         this.memory = new ArrayList<>(CardDeckB.memoryMax);
     }
 

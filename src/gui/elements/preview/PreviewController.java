@@ -32,6 +32,7 @@
 
 package gui.elements.preview;
 
+import interfaces.CardDeck;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -41,6 +42,9 @@ import java.io.IOException;
  * Sample custom control hosting a text field and a button.
  */
 public class PreviewController extends AnchorPane{
+
+    private CardDeck preview;
+
     public PreviewController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
         fxmlLoader.setController(this);
@@ -50,5 +54,9 @@ public class PreviewController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+
+    public void setPreview(CardDeck preview){
+        this.preview=preview;
     }
 }
