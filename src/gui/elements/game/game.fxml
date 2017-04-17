@@ -34,16 +34,16 @@
                     minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
                     style="-fx-background-radius: 10;"/>
         <GoalController fx:id="goal1" layoutX="462.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0"
+                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
                     style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
         <GoalController fx:id="goal2" layoutX="592.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0"
+                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
                     style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
         <GoalController fx:id="goal3" layoutX="722.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0"
+                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
                     style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
         <GoalController fx:id="goal4" layoutX="852.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefHeight="150.0" prefWidth="100.0"
+                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
                     style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
     </children>
 </fx:root>

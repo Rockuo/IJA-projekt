@@ -64,7 +64,7 @@ public class CardController extends AnchorPane{
         System.out.print(cardImage.getFitHeight());
 
         //TODO upraviť cestu
-        String imageName = "S2";
+        String imageName = "";
         String imagePath = pathStart + imageName + pathEnd;
         cardImage.setImage(new Image(imagePath));
 
