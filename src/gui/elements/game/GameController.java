@@ -102,6 +102,7 @@ public class GameController extends AnchorPane {
         this.column5.setWorkingPack(factory.createWorkingPack());
         this.column6.setWorkingPack(factory.createWorkingPack());
         this.column7.setWorkingPack(factory.createWorkingPack());
+        this.preview.setPreview(factory.createPreview());
         this.pack.setDeck(factory.createCardDeck());
         this.goal1.setTargetPack(factory.createTargetPack(Card.Color.SPADES));
         this.goal2.setTargetPack(factory.createTargetPack(Card.Color.CLUBS));

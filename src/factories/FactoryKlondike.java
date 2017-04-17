@@ -29,4 +29,9 @@ public class FactoryKlondike extends AbstractFactorySolitaire {
     public CardStack createWorkingPack() {
         return new CardStackB();
     }
+
+    @Override
+    public CardDeck createPreview(){
+        return new CardDeckB();
+    }
 }
