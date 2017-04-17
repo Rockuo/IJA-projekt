@@ -33,6 +33,7 @@
 package gui.elements.game;
 
 
+import java.awt.*;
 import java.io.IOException;
 
 import abstractFactories.AbstractFactorySolitaire;
@@ -44,6 +45,8 @@ import javafx.beans.NamedArg;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+
+import interfaces.Card;
 
 /**
  *
@@ -67,7 +70,7 @@ public class GameController extends AnchorPane {
     @FXML
     private PackController pack;
     @FXML
-    private PreviewController preview;
+    private PreviewController preview; //todo
     @FXML
     private GoalController goal1;
     @FXML
@@ -77,7 +80,7 @@ public class GameController extends AnchorPane {
     @FXML
     private GoalController goal4;
 
-
+    private AbstractFactorySolitaire factory;
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
         fxmlLoader.setRoot(this);
@@ -91,6 +94,22 @@ public class GameController extends AnchorPane {
     }
 
     public void setAllElements(AbstractFactorySolitaire factory) {
+        this.factory = factory;
+        this.column1.setWorkingPack(factory.createWorkingPack());
+        this.column2.setWorkingPack(factory.createWorkingPack());
+        this.column3.setWorkingPack(factory.createWorkingPack());
+        this.column4.setWorkingPack(factory.createWorkingPack());
+        this.column5.setWorkingPack(factory.createWorkingPack());
+        this.column6.setWorkingPack(factory.createWorkingPack());
+        this.column7.setWorkingPack(factory.createWorkingPack());
+        this.pack.setDeck(factory.createCardDeck());
+        this.goal1.setTargetPack(factory.createTargetPack(Card.Color.SPADES));
+        this.goal2.setTargetPack(factory.createTargetPack(Card.Color.CLUBS));
+        this.goal3.setTargetPack(factory.createTargetPack(Card.Color.DIAMONDS));
+        this.goal4.setTargetPack(factory.createTargetPack(Card.Color.HEARTS));
+    }
+
+    public void generateCards(){
 
     }
 }

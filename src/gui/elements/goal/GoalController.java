@@ -32,6 +32,7 @@
 
 package gui.elements.goal;
 
+import interfaces.CardDeck;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -41,6 +42,8 @@ import java.io.IOException;
  * Sample custom control hosting a text field and a button.
  */
 public class GoalController extends AnchorPane{
+    private CardDeck targetPack;
+
     public GoalController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("goal.fxml"));
         fxmlLoader.setController(this);
@@ -50,5 +53,9 @@ public class GoalController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+
+    public void setTargetPack(CardDeck target){
+        this.targetPack = target;
     }
 }

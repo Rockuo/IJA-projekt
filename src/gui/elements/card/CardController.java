@@ -32,17 +32,11 @@
 
 package gui.elements.card;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.*;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -54,7 +48,7 @@ public class CardController extends AnchorPane{
     private String  pathStart = "file:///D:/4.sem/IJA/project/IJA-projekt/src/gui/images/cardPack/";
     private String  pathEnd = ".png";
 
-    public CardController() throws IOException {
+    public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);

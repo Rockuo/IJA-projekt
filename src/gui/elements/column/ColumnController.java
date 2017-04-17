@@ -32,15 +32,18 @@
 
 package gui.elements.column;
 
+import interfaces.CardStack;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
 /**
- * Sample custom control hosting a text field and a button.
+ *
  */
 public class ColumnController extends AnchorPane{
+    private CardStack workingPack;
+
     public ColumnController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("column.fxml"));
         fxmlLoader.setController(this);
@@ -50,5 +53,9 @@ public class ColumnController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+
+    public void setWorkingPack(CardStack workingPack){
+        this.workingPack = workingPack;
     }
 }
