@@ -13,4 +13,7 @@ public interface CardDeck {
     boolean put(Card card);
 
     int size();
+
+    boolean undo();
+
 }

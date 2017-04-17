@@ -1,5 +1,7 @@
 package gui.klondike;
 
+import abstractFactories.AbstractFactorySolitaire;
+import factories.FactoryKlondike;
 import gui.elements.game.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,8 +23,11 @@ public class MainController {
     private int gameCount = 0;
 
     public void initialize() {
-//        this.games = new HashMap<String, GameController>();
-
+        AbstractFactorySolitaire factory = new FactoryKlondike();
+        this.games = new HashMap<>();
+        GameController tmp = (GameController)gamePane.getChildren().get(0);
+        tmp.setAllElements(factory);
+        this.games.put("1",  tmp);
     }
 
     private void expand() {

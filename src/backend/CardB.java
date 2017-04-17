@@ -1,14 +1,22 @@
 package backend;
 
-public class CardB implements interfaces.Card {
+import interfaces.Card;
+import org.json.simple.JSONObject;
+
+import java.util.*;
+
+public class CardB implements Card {
 
     private int value;
     private Color color;
     private boolean faceUp = false;
+    private ArrayList<Map<String,Object>> memory;
+    private static final int  memoryMax = 1;
 
     public CardB(Color color, int value) {
         this.color = color;
         this.value = value;
+        this.memory = new ArrayList<>(CardB.memoryMax);
     }
 
     @Override
@@ -26,6 +34,7 @@ public class CardB implements interfaces.Card {
         if (this.faceUp) {
             return false;
         }
+        remember();
         this.faceUp = true;
         return true;
     }
@@ -37,7 +46,7 @@ public class CardB implements interfaces.Card {
     }
 
     @Override
-    public boolean similarColorTo(interfaces.Card c) {
+    public boolean similarColorTo(Card c) {
         return (
                 (this.color == Color.HEARTS || this.color == Color.DIAMONDS) &&
                         (c.color() == Color.HEARTS || c.color() == Color.DIAMONDS)
@@ -48,7 +57,7 @@ public class CardB implements interfaces.Card {
     }
 
     @Override
-    public int compareValue(interfaces.Card c) {
+    public int compareValue(Card c) {
         return this.value - c.value();
     }
 
@@ -68,5 +77,36 @@ public class CardB implements interfaces.Card {
         result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + (faceUp ? 1 : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        JSONObject jsonObject = new JSONObject();
+        Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("value", this.value);
+        hashMap.put("color", this.color);
+        hashMap.put("faceUp",this.faceUp);
+        jsonObject.putAll(hashMap);
+        return jsonObject.toJSONString();
+    }
+
+    private void remember(){
+        Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("faceUp",this.faceUp);
+        hashMap.get("");
+        if (this.memory.size() == CardB.memoryMax) {
+           this.memory.remove(0);
+        }
+        this.memory.add(hashMap);
+    }
+
+    public boolean revert() {
+        if(this.memory.isEmpty()) {
+            return false;
+        }
+        if ((boolean)this.memory.get(0).get("faceUp")){
+           this.faceUp = false;
+        }
+        return true;
     }
 }

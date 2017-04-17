@@ -35,13 +35,48 @@ package gui.elements.game;
 
 import java.io.IOException;
 
+import abstractFactories.AbstractFactorySolitaire;
+import gui.elements.column.ColumnController;
+import gui.elements.goal.GoalController;
+import gui.elements.pack.PackController;
+import gui.elements.preview.PreviewController;
+import javafx.beans.NamedArg;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * Sample custom control hosting a text field and a button.
+ *
  */
 public class GameController extends AnchorPane {
+
+    @FXML
+    private ColumnController column1;
+    @FXML
+    private ColumnController column2;
+    @FXML
+    private ColumnController column3;
+    @FXML
+    private ColumnController column4;
+    @FXML
+    private ColumnController column5;
+    @FXML
+    private ColumnController column6;
+    @FXML
+    private ColumnController column7;
+    @FXML
+    private PackController pack;
+    @FXML
+    private PreviewController preview;
+    @FXML
+    private GoalController goal1;
+    @FXML
+    private GoalController goal2;
+    @FXML
+    private GoalController goal3;
+    @FXML
+    private GoalController goal4;
+
 
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
@@ -55,4 +90,7 @@ public class GameController extends AnchorPane {
         }
     }
 
+    public void setAllElements(AbstractFactorySolitaire factory) {
+
+    }
 }

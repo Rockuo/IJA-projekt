@@ -3,7 +3,10 @@ package backend;
 
 import interfaces.Card;
 import interfaces.CardStack;
+import org.json.simple.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class CardStackB extends CardDeckB implements CardStack {
@@ -55,7 +58,6 @@ public class CardStackB extends CardDeckB implements CardStack {
         return true;
     }
 
-
     @Override
     public boolean put(CardStack stack) {
         if(stack.size() == 0){
@@ -84,5 +86,36 @@ public class CardStackB extends CardDeckB implements CardStack {
             return (Stack<Card>)clone;
         }
         throw new IllegalArgumentException();
+    }
+
+    @Override
+    public String toString() {
+        JSONObject jsonObject = new JSONObject();
+        Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("stack",this.stack);
+        hashMap.put("ignoreFirst",this.ignoreFirst);
+        jsonObject.putAll(hashMap);
+        return jsonObject.toJSONString();
+    }
+
+    @Override
+    public boolean undo() {
+        if(this.memory.isEmpty()){
+            return false;
+        }
+        Map<String, Object> hashMap = memory.get(this.memory.size()-1);
+        this.stack = (Stack<Card>) hashMap.get("stack");
+        this.ignoreFirst = (boolean)hashMap.get("ignoreFirst");
+        return true;
+    }
+
+    private void remember() {
+        Map<String, Object> hashMap = new HashMap<>();
+        hashMap.put("stack",this.stack);
+        hashMap.put("ignoreFirst",this.ignoreFirst);
+        if (this.memory.size() == CardDeckB.memoryMax) {
+            this.memory.remove(0);
+        }
+        this.memory.add(hashMap);
     }
 }
