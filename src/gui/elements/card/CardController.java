@@ -32,17 +32,29 @@
 
 package gui.elements.card;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.*;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
 public class CardController extends AnchorPane{
-    public CardController() {
+
+    @FXML private ImageView cardImage;
+    private String  pathStart = "file:///D:/4.sem/IJA/project/IJA-projekt/src/gui/images/cardPack/";
+    private String  pathEnd = ".png";
+
+    public CardController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
@@ -51,5 +63,16 @@ public class CardController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        System.out.print(cardImage.getFitHeight());
+
+        //TODO upraviť cestu
+        String imageName = "S2";
+        String imagePath = pathStart + imageName + pathEnd;
+        cardImage.setImage(new Image(imagePath));
+
+
+        //String imageSource = "http://../../images/cardPack/H1small.png";
+        //cardImage.setImage(new Image(imageSource));
+        System.out.print(cardImage.getImage());
     }
 }
