@@ -37,6 +37,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.*;
+
+import interfaces.Card;
 import java.io.IOException;
 
 /**
@@ -47,6 +49,8 @@ public class CardController extends AnchorPane{
     @FXML private ImageView cardImage;
     private String  pathStart = "file:///D:/4.sem/IJA/project/IJA-projekt/src/gui/images/cardPack/";
     private String  pathEnd = ".png";
+    private Card card;
+
 
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
@@ -68,5 +72,9 @@ public class CardController extends AnchorPane{
         //String imageSource = "http://../../images/cardPack/H1small.png";
         //cardImage.setImage(new Image(imageSource));
         System.out.print(cardImage.getImage());
+    }
+
+    public void setCard(Card card){
+        this.card = card;
     }
 }
