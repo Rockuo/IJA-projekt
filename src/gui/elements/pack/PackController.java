@@ -32,18 +32,24 @@
 
 package gui.elements.pack;
 
+import gui.elements.preview.PreviewController;
+import interfaces.Card;
 import interfaces.CardDeck;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PackController extends AnchorPane{
+public class PackController extends AnchorPane {
 
     private CardDeck cardDeck;
+    private PreviewController preview;
 
     public PackController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pack.fxml"));
@@ -54,9 +60,27 @@ public class PackController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        this.setOnMouseClicked(this::mouseClick);
     }
 
-    public void setDeck(CardDeck deck){
+    public void confPack(CardDeck deck, PreviewController preview) {
         this.cardDeck = deck;
+        this.preview = preview;
+    }
+
+    public Card getCard() {
+        return cardDeck.pop();
+    }
+
+    private void mouseClick(MouseEvent event) {
+        if (this.cardDeck.isEmpty()) {
+            ArrayList<Card> cards = this.preview.getAllCards();
+            if (cards.size() == 0) return;
+            for (int i = 0; i < cards.size(); i++) {
+                this.cardDeck.put(cards.remove(0));
+            }
+        }
+        //todo move card to preview
     }
 }

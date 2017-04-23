@@ -61,7 +61,7 @@ public class CardController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        System.out.print(cardImage.getFitHeight());
+//        System.out.print(cardImage.getFitHeight());
 
         //TODO upraviť cestu
         String imageName = "";
@@ -71,7 +71,7 @@ public class CardController extends AnchorPane{
 
         //String imageSource = "http://../../images/cardPack/H1small.png";
         //cardImage.setImage(new Image(imageSource));
-        System.out.print(cardImage.getImage());
+//        System.out.print(cardImage.getImage());
     }
 
     public void setCard(Card card){

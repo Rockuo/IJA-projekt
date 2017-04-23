@@ -36,12 +36,14 @@ import interfaces.CardDeck;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
+import interfaces.Card;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PreviewController extends AnchorPane{
+public class PreviewController extends AnchorPane {
 
     private CardDeck preview;
 
@@ -56,7 +58,23 @@ public class PreviewController extends AnchorPane{
         }
     }
 
-    public void setPreview(CardDeck preview){
-        this.preview=preview;
+    public void setPreview(CardDeck preview) {
+        this.preview = preview;
+    }
+
+    public void addCard(Card card){
+        this.preview.put(card);
+        this.updateView();
+    }
+
+    public ArrayList<Card> getAllCards(){
+        ArrayList<Card> cards = new ArrayList<>();
+        while (!preview.isEmpty())
+            cards.add(this.preview.pop());
+        return cards;
+    }
+
+    private void updateView(){
+        //todo
     }
 }

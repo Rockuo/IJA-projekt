@@ -18,7 +18,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         AbstractFactorySolitaire factory = new FactoryKlondike();
 
-
         Parent root = FXMLLoader.load(getClass().getResource("klondike.fxml"));
         primaryStage.setTitle("gui.klondike Solitaire");
         primaryStage.setScene(new Scene(root, 1024, 768));

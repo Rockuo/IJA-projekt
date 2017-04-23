@@ -33,7 +33,6 @@
 package gui.elements.game;
 
 
-import java.awt.*;
 import java.io.IOException;
 
 import abstractFactories.AbstractFactorySolitaire;
@@ -41,7 +40,6 @@ import gui.elements.column.ColumnController;
 import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
-import javafx.beans.NamedArg;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -70,7 +68,7 @@ public class GameController extends AnchorPane {
     @FXML
     private PackController pack;
     @FXML
-    private PreviewController preview; //todo
+    private PreviewController preview;
     @FXML
     private GoalController goal1;
     @FXML
@@ -103,7 +101,7 @@ public class GameController extends AnchorPane {
         this.column6.setWorkingPack(factory.createWorkingPack());
         this.column7.setWorkingPack(factory.createWorkingPack());
         this.preview.setPreview(factory.createPreview());
-        this.pack.setDeck(factory.createCardDeck());
+        this.pack.confPack(factory.createCardDeck(),this.preview);
         this.goal1.setTargetPack(factory.createTargetPack(Card.Color.SPADES));
         this.goal2.setTargetPack(factory.createTargetPack(Card.Color.CLUBS));
         this.goal3.setTargetPack(factory.createTargetPack(Card.Color.DIAMONDS));

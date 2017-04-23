@@ -4,22 +4,19 @@ import interfaces.Card;
 import interfaces.CardDeck;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class CardDeckB implements CardDeck {
 
     protected Stack<Card> stack;
     private int maxSize;
     private Card.Color color = null;
-    protected ArrayList<Map<String,Object>> memory;
-    protected static final int  memoryMax = 6;
+    protected ArrayList<Map<String, Object>> memory;
+    protected static final int memoryMax = 6;
 
-    public CardDeckB(){
+    public CardDeckB() {
         this.stack = new Stack<>();
-        this.maxSize=52;
+        this.maxSize = 52;
         this.memory = new ArrayList<>(CardDeckB.memoryMax);
     }
 
@@ -27,10 +24,16 @@ public class CardDeckB implements CardDeck {
         int byColor = maxSize / 4;
         this.maxSize = maxSize;
         this.stack = new Stack<Card>();
+        ArrayList<CardB> cardBArrayList = new ArrayList<>();
         for (Card.Color color : Card.Color.values()) {
             for (int i = 1; i <= byColor; i++) {
-                stack.push(new CardB(color, i));
+                cardBArrayList.add(new CardB(color, i));
             }
+        }
+        Random random = new Random();
+        for (int i = maxSize - 1; i >= 0; i--) {
+            int index = random.nextInt(i + 1);
+            this.stack.push(cardBArrayList.remove(index));
         }
         this.memory = new ArrayList<>(CardDeckB.memoryMax);
     }
@@ -109,21 +112,21 @@ public class CardDeckB implements CardDeck {
 
     @Override
     public boolean undo() {
-        if(this.memory.isEmpty()){
+        if (this.memory.isEmpty()) {
             return false;
         }
-        Map<String, Object> hashMap = memory.get(this.memory.size()-1);
+        Map<String, Object> hashMap = memory.get(this.memory.size() - 1);
         this.stack = (Stack<Card>) hashMap.get("stack");
-        this.maxSize = (int)hashMap.get("maxSize");
+        this.maxSize = (int) hashMap.get("maxSize");
         this.color = (Card.Color) hashMap.get("color");
         return true;
     }
 
     private void remember() {
         Map<String, Object> hashMap = new HashMap<>();
-        hashMap.put("stack",this.stack);
-        hashMap.put("maxSize",this.maxSize);
-        hashMap.put("color",this.color);
+        hashMap.put("stack", this.stack);
+        hashMap.put("maxSize", this.maxSize);
+        hashMap.put("color", this.color);
         if (this.memory.size() == CardDeckB.memoryMax) {
             this.memory.remove(0);
         }
@@ -134,9 +137,9 @@ public class CardDeckB implements CardDeck {
     public String toString() {
         JSONObject jsonObject = new JSONObject();
         Map<String, Object> hashMap = new HashMap<>();
-        hashMap.put("stack",this.stack);
-        hashMap.put("maxSize",this.maxSize);
-        hashMap.put("color",this.color);
+        hashMap.put("stack", this.stack);
+        hashMap.put("maxSize", this.maxSize);
+        hashMap.put("color", this.color);
         jsonObject.putAll(hashMap);
         return jsonObject.toJSONString();
     }
