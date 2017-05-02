@@ -1,7 +1,6 @@
 package backend;
 
 import interfaces.Card;
-import org.json.simple.JSONObject;
 
 import java.util.*;
 
@@ -10,8 +9,8 @@ public class CardB implements Card {
     private int value;
     private Color color;
     private boolean faceUp = false;
-    private ArrayList<Map<String,Object>> memory;
-    private static final int  memoryMax = 1;
+    private ArrayList<Map<String, Object>> memory;
+    private static final int memoryMax = 1;
 
     public CardB(Color color, int value) {
         this.color = color;
@@ -34,7 +33,6 @@ public class CardB implements Card {
         if (this.faceUp) {
             return false;
         }
-        remember();
         this.faceUp = true;
         return true;
     }
@@ -81,32 +79,6 @@ public class CardB implements Card {
 
     @Override
     public String toString() {
-        JSONObject jsonObject = new JSONObject();
-        Map<String, Object> hashMap = new HashMap<>();
-        hashMap.put("value", this.value);
-        hashMap.put("color", this.color);
-        hashMap.put("faceUp",this.faceUp);
-        jsonObject.putAll(hashMap);
-        return jsonObject.toJSONString();
-    }
-
-    private void remember(){
-        Map<String, Object> hashMap = new HashMap<>();
-        hashMap.put("faceUp",this.faceUp);
-        hashMap.get("");
-        if (this.memory.size() == CardB.memoryMax) {
-           this.memory.remove(0);
-        }
-        this.memory.add(hashMap);
-    }
-
-    public boolean revert() {
-        if(this.memory.isEmpty()) {
-            return false;
-        }
-        if ((boolean)this.memory.get(0).get("faceUp")){
-           this.faceUp = false;
-        }
-        return true;
+        return this.color.toString() + this.value;
     }
 }

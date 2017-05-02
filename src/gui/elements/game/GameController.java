@@ -34,12 +34,18 @@ package gui.elements.game;
 
 
 import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 import abstractFactories.AbstractFactorySolitaire;
 import gui.elements.column.ColumnController;
 import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
+import interfaces.CardDeck;
+import interfaces.CardStack;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -78,7 +84,6 @@ public class GameController extends AnchorPane {
     @FXML
     private GoalController goal4;
 
-    private AbstractFactorySolitaire factory;
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
         fxmlLoader.setRoot(this);
@@ -92,7 +97,6 @@ public class GameController extends AnchorPane {
     }
 
     public void setAllElements(AbstractFactorySolitaire factory) {
-        this.factory = factory;
         this.column1.setWorkingPack(factory.createWorkingPack());
         this.column2.setWorkingPack(factory.createWorkingPack());
         this.column3.setWorkingPack(factory.createWorkingPack());
@@ -101,14 +105,57 @@ public class GameController extends AnchorPane {
         this.column6.setWorkingPack(factory.createWorkingPack());
         this.column7.setWorkingPack(factory.createWorkingPack());
         this.preview.setPreview(factory.createPreview());
-        this.pack.confPack(factory.createCardDeck(),this.preview);
+        this.pack.confPack(factory.createCardDeck(), this.preview, factory.createCard(Card.Color.CLUBS, 1));
         this.goal1.setTargetPack(factory.createTargetPack(Card.Color.SPADES));
         this.goal2.setTargetPack(factory.createTargetPack(Card.Color.CLUBS));
         this.goal3.setTargetPack(factory.createTargetPack(Card.Color.DIAMONDS));
         this.goal4.setTargetPack(factory.createTargetPack(Card.Color.HEARTS));
     }
 
-    public void generateCards(){
+    public void generateCards() {
 
+    }
+
+    public HashMap<String, Object> save() {
+        HashMap<String, Object> saved = new HashMap<>();
+        ArrayList<CardStack> columns = new ArrayList<>();
+        ArrayList<CardDeck> goals = new ArrayList<>();
+        columns.add(this.column1.save());
+        columns.add(this.column2.save());
+        columns.add(this.column3.save());
+        columns.add(this.column4.save());
+        columns.add(this.column5.save());
+        columns.add(this.column6.save());
+        columns.add(this.column7.save());
+        goals.add(this.goal1.save());
+        goals.add(this.goal2.save());
+        goals.add(this.goal3.save());
+        goals.add(this.goal4.save());
+        saved.put("columns", columns);
+        saved.put("goals", goals);
+        saved.put("preview", preview.save());
+        saved.put("pack", pack.save());
+        return saved;
+    }
+
+    public void open(HashMap<String, Object> data, AbstractFactorySolitaire factory) {
+        ArrayList<CardStack> columns = (ArrayList<CardStack>) data.get("columns");
+        ArrayList<CardDeck> goals = (ArrayList<CardDeck>) data.get("goals");
+        this.column1.setWorkingPack(columns.get(0));
+        this.column2.setWorkingPack(columns.get(1));
+        this.column3.setWorkingPack(columns.get(2));
+        this.column4.setWorkingPack(columns.get(3));
+        this.column5.setWorkingPack(columns.get(4));
+        this.column6.setWorkingPack(columns.get(5));
+        this.column7.setWorkingPack(columns.get(6));
+        this.preview.setPreview((CardDeck) data.get("preview"));
+        CardDeck deck = (CardDeck) data.get("pack");
+        Card backCard = factory.createCard(Card.Color.CLUBS, 1);
+        PreviewController prev = this.preview;
+        this.pack.confPack(deck, prev, backCard);
+        this.goal1.setTargetPack(goals.get(0));
+        this.goal2.setTargetPack(goals.get(1));
+        this.goal3.setTargetPack(goals.get(2));
+        this.goal4.setTargetPack(goals.get(3));
     }
 }

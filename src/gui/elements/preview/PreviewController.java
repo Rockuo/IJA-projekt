@@ -32,20 +32,26 @@
 
 package gui.elements.preview;
 
+import gui.elements.card.CardController;
 import interfaces.CardDeck;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import interfaces.Card;
+
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PreviewController extends AnchorPane {
+public class PreviewController extends AnchorPane implements Serializable {
 
     private CardDeck preview;
+    @FXML
+    private CardController cardFX;
 
     public PreviewController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
@@ -60,21 +66,31 @@ public class PreviewController extends AnchorPane {
 
     public void setPreview(CardDeck preview) {
         this.preview = preview;
+        updateView();
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         this.preview.put(card);
         this.updateView();
     }
 
-    public ArrayList<Card> getAllCards(){
+    public ArrayList<Card> getAllCards() {
         ArrayList<Card> cards = new ArrayList<>();
         while (!preview.isEmpty())
             cards.add(this.preview.pop());
+        this.updateView();
         return cards;
     }
 
-    private void updateView(){
-        //todo
+    public void updateView() {
+        if(this.preview.isEmpty()) {
+            cardFX.setCard(null);
+        }else {
+            cardFX.setCard(this.preview.top());
+        }
+    }
+
+    public CardDeck save() {
+        return this.preview;
     }
 }

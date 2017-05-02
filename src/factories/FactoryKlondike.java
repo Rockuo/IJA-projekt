@@ -8,7 +8,9 @@ import backend.CardStackB;
 import interfaces.CardDeck;
 import interfaces.CardStack;
 
-public class FactoryKlondike extends AbstractFactorySolitaire {
+import java.io.Serializable;
+
+public class FactoryKlondike extends AbstractFactorySolitaire  implements Serializable {
 
     @Override
     public interfaces.Card createCard(interfaces.Card.Color color, int value) {

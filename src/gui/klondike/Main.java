@@ -3,6 +3,7 @@ package gui.klondike;
 
 import abstractFactories.AbstractFactorySolitaire;
 import factories.FactoryKlondike;
+import gui.elements.pack.PackController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,10 +17,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        AbstractFactorySolitaire factory = new FactoryKlondike();
-
-        Parent root = FXMLLoader.load(getClass().getResource("klondike.fxml"));
-        primaryStage.setTitle("gui.klondike Solitaire");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("klondike.fxml"));
+        Parent root = fxmlLoader.load();
+        ((MainController) fxmlLoader.getController()).setStage(primaryStage);
+        primaryStage.setTitle("Solitaire");
         primaryStage.setScene(new Scene(root, 1024, 768));
         primaryStage.show();
     }

@@ -37,11 +37,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class GoalController extends AnchorPane{
+public class GoalController extends AnchorPane  implements Serializable {
     private CardDeck targetPack;
 
     public GoalController() {
@@ -57,5 +58,9 @@ public class GoalController extends AnchorPane{
 
     public void setTargetPack(CardDeck target){
         this.targetPack = target;
+    }
+
+    public CardDeck save() {
+        return this.targetPack;
     }
 }

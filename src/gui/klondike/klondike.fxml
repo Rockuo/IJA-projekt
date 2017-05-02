@@ -26,6 +26,7 @@
                     <items>
                         <MenuItem mnemonicParsing="false" text="Create New Game" onAction="#newGameHandler"/>
                         <MenuItem mnemonicParsing="false" text="Open Game" onAction="#openGameHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Save Game" onAction="#saveGameHandler"/>
                         <MenuItem mnemonicParsing="false" text="Varianta" onAction="#variantHandler"/>
                         <MenuItem mnemonicParsing="false" text="Štatistika" onAction="#statisticHandler"/>
                         <MenuItem mnemonicParsing="false" text="Exit" onAction="#exitHandler"/>
@@ -52,8 +53,6 @@
                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0"
                     fx:id="gamePane"
         >
-
-            <GameController/>
         </AnchorPane>
     </children>
 </AnchorPane>

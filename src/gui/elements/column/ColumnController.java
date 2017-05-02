@@ -37,11 +37,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *
  */
-public class ColumnController extends AnchorPane{
+public class ColumnController extends AnchorPane implements Serializable{
     private CardStack workingPack;
 
     public ColumnController() {
@@ -57,5 +58,9 @@ public class ColumnController extends AnchorPane{
 
     public void setWorkingPack(CardStack workingPack){
         this.workingPack = workingPack;
+    }
+
+    public CardStack save() {
+        return this.workingPack;
     }
 }

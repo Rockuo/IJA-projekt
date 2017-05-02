@@ -6,15 +6,18 @@ import gui.elements.game.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
+import java.io.*;
 import java.util.HashMap;
 
 public class MainController {
 
     private final String GAME_NAME = "newGame";
-
+    private final FileChooser fileChooser = new FileChooser();
     private int gameNameIterator = 0;
-
+    private Stage stage;
     @FXML
     private AnchorPane gamePane;
 
@@ -22,12 +25,13 @@ public class MainController {
 
     private int gameCount = 0;
 
-    public void initialize() {
+    public void initialize() throws IOException, ClassNotFoundException {
         AbstractFactorySolitaire factory = new FactoryKlondike();
         this.games = new HashMap<>();
-        GameController tmp = (GameController)gamePane.getChildren().get(0);
-        tmp.setAllElements(factory);
-        this.games.put("1",  tmp);
+        GameController fGame = new GameController();
+        fGame.setAllElements(factory);
+        this.games.put("1", fGame);
+        this.gamePane.getChildren().add(fGame);
     }
 
     private void expand() {
@@ -43,7 +47,6 @@ public class MainController {
 //    }
 
     public void newGameHandler(ActionEvent event) {
-        System.out.println("bbb");
         this.gameCount++;
         if (this.gameCount > 1) {
             this.expand();
@@ -54,8 +57,32 @@ public class MainController {
         }
     }
 
-    public void openGameHandler(ActionEvent event) {
+    public void openGameHandler(ActionEvent event) throws IOException, ClassNotFoundException {
+        File file = fileChooser.showOpenDialog(this.stage);
+        FileInputStream fileIn = new FileInputStream(file);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        HashMap<String, Object> data = (HashMap<String, Object>) in.readObject();
+        in.close();
+        fileIn.close();
+        GameController game = new GameController();
+        game.open(data, new FactoryKlondike());
+        this.gamePane.getChildren().remove(0);
+        gamePane.getChildren().add(game);
+    }
 
+    public void saveGameHandler(ActionEvent event) throws IOException {
+        File file = fileChooser.showSaveDialog(this.stage);
+        if (file != null) {
+            FileOutputStream fileOut = new FileOutputStream(file);
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(games.get("1").save());
+            out.close();
+            fileOut.close();
+        }
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     public void variantHandler(ActionEvent event) {

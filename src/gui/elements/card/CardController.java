@@ -39,17 +39,18 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.*;
 
 import interfaces.Card;
+
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
 public class CardController extends AnchorPane{
 
-    @FXML private ImageView cardImage;
-    private String  pathStart = "file:///D:/4.sem/IJA/project/IJA-projekt/src/gui/images/cardPack/";
-    private String  pathEnd = ".png";
-    private Card card;
+    @FXML
+    private ImageView cardImage;
+    private Card card = null;
 
 
     public CardController() {
@@ -61,20 +62,24 @@ public class CardController extends AnchorPane{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-//        System.out.print(cardImage.getFitHeight());
-
-        //TODO upraviť cestu
-        String imageName = "";
-        String imagePath = pathStart + imageName + pathEnd;
-        cardImage.setImage(new Image(imagePath));
-
-
-        //String imageSource = "http://../../images/cardPack/H1small.png";
-        //cardImage.setImage(new Image(imageSource));
-//        System.out.print(cardImage.getImage());
     }
 
-    public void setCard(Card card){
+    public void setCard(Card card) {
         this.card = card;
+        this.updateView();
+    }
+
+    public void updateView() {
+        String imagePath;
+        if (card != null) {
+            String name = "back";
+            if (card.isTurnedFaceUp()) {
+                name = card.toString();
+            }
+            imagePath = getClass().getResource("../../images/cardPack/" + name + ".png").toString();
+        } else {
+            imagePath = getClass().getResource("../../images/goal.png").toString(); // todo
+        }
+        cardImage.setImage(new Image(imagePath));
     }
 }

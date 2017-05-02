@@ -1,6 +1,8 @@
 package interfaces;
 
-public interface Card {
+import java.io.Serializable;
+
+public interface Card extends Serializable{
 
     enum Color {
         DIAMONDS('D'),
@@ -43,5 +45,4 @@ public interface Card {
 
     int compareValue(Card c);
 
-    boolean revert();
 }

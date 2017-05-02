@@ -32,24 +32,31 @@
 
 package gui.elements.pack;
 
+import gui.elements.card.CardController;
 import gui.elements.preview.PreviewController;
 import interfaces.Card;
 import interfaces.CardDeck;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PackController extends AnchorPane {
+public class PackController extends AnchorPane{
 
     private CardDeck cardDeck;
     private PreviewController preview;
+    @FXML
+    private CardController cardFX;
+    private Card backCard;
 
     public PackController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pack.fxml"));
@@ -60,13 +67,14 @@ public class PackController extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
         this.setOnMouseClicked(this::mouseClick);
     }
 
-    public void confPack(CardDeck deck, PreviewController preview) {
+    public void confPack(CardDeck deck, PreviewController preview, Card backCard) {
         this.cardDeck = deck;
         this.preview = preview;
+        this.backCard = backCard;
+        this.cardFX.setCard(this.backCard);
     }
 
     public Card getCard() {
@@ -77,10 +85,22 @@ public class PackController extends AnchorPane {
         if (this.cardDeck.isEmpty()) {
             ArrayList<Card> cards = this.preview.getAllCards();
             if (cards.size() == 0) return;
-            for (int i = 0; i < cards.size(); i++) {
+            int size = cards.size();
+            for (int i = 0; i < size; i++) {
                 this.cardDeck.put(cards.remove(0));
             }
+            this.cardFX.setCard(this.backCard);
+        } else {
+            Card card = this.cardDeck.pop();
+            card.turnFaceUp();
+            preview.addCard(card);
+            if(this.cardDeck.isEmpty()){
+                this.cardFX.setCard(null);
+            }
         }
-        //todo move card to preview
+    }
+
+    public CardDeck save(){
+        return this.cardDeck;
     }
 }

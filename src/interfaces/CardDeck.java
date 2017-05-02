@@ -1,6 +1,8 @@
 package interfaces;
 
-public interface CardDeck {
+import java.io.Serializable;
+
+public interface CardDeck extends Serializable {
 
     Card get();
 
@@ -14,6 +16,5 @@ public interface CardDeck {
 
     int size();
 
-    boolean undo();
-
+    Card top();
 }
