@@ -43,12 +43,11 @@ public class MainController {
 
     public void newTab(GameController game) {
         if (!expanded) {
+            this.game4 = new GameFourController(this);
             this.expanded = true;
             this.gamePane.getChildren().remove(0);
-            GameFourController game4 = new GameFourController(this);
-            this.game4 = game4;
-            this.gamePane.getChildren().add(game4);
-            game4.setGame(1, game);
+            this.gamePane.getChildren().add(this.game4);
+            this.game4.setGame(1, game);
             this.stage.maxHeightProperty().setValue(1060);
             this.stage.maxWidthProperty().setValue(1536);
             this.stage.minHeightProperty().setValue(1060);
@@ -64,9 +63,17 @@ public class MainController {
     }
 
     public void newGame(int id) {
+        GameController emptyGame = new GameController();
+        emptyGame.configure(new FactoryKlondike(),id,this);
+        if (!expanded) {
+            this.gamePane.getChildren().remove(0);
+            this.gamePane.getChildren().add(emptyGame);
+        } else {
+            this.game4.setGame(id, emptyGame);
+        }
     }
 
-    public void openGame(int id) throws IOException, ClassNotFoundException { // todo chyba při zavírání
+    public void openGame(int id) throws IOException, ClassNotFoundException {
         File file = fileChooser.showOpenDialog(this.stage);
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -74,7 +81,7 @@ public class MainController {
         in.close();
         fileIn.close();
         GameController game = new GameController();
-        game.open(data, new FactoryKlondike(), 1, this);
+        game.open(data, new FactoryKlondike(), id, this);
         if (!expanded) {
             this.gamePane.getChildren().remove(0);
             this.gamePane.getChildren().add(game);
