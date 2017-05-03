@@ -173,7 +173,7 @@ public class GameController extends AnchorPane {
         this.goal4.confTargetPack(goals.get(3),this.history);
     }
 
-    private void updateView() {
+    public void updateView() {
         this.column1.updateView();
         this.column2.updateView();
         this.column3.updateView();
@@ -193,7 +193,7 @@ public class GameController extends AnchorPane {
 
     }
 
-//    public void openGameHandler(ActionEvent event) throws IOException, ClassNotFoundException {
+    public void openGameHandler(ActionEvent event) throws IOException, ClassNotFoundException {
 //        File file = fileChooser.showOpenDialog(this.stage);
 //        FileInputStream fileIn = new FileInputStream(file);
 //        ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -204,9 +204,9 @@ public class GameController extends AnchorPane {
 //        game.open(data, new FactoryKlondike());
 //        this.gamePane.getChildren().remove(0);
 //        gamePane.getChildren().add(game);
-//    }
-//
-//    public void saveGameHandler(ActionEvent event) throws IOException {
+    }
+
+    public void saveGameHandler(ActionEvent event) throws IOException {
 //        File file = fileChooser.showSaveDialog(this.stage);
 //        if (file != null) {
 //            FileOutputStream fileOut = new FileOutputStream(file);
@@ -215,7 +215,7 @@ public class GameController extends AnchorPane {
 //            out.close();
 //            fileOut.close();
 //        }
-//    }
+    }
 
     public void undoHandler(ActionEvent event) {
         this.undo();

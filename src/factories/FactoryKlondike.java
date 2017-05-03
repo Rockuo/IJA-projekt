@@ -5,6 +5,7 @@ import abstractFactories.AbstractFactorySolitaire;
 import backend.CardB;
 import backend.CardDeckB;
 import backend.CardStackB;
+import interfaces.Card;
 import interfaces.CardDeck;
 import interfaces.CardStack;
 
