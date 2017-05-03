@@ -17,28 +17,26 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Create New Game" />
-                        <MenuItem mnemonicParsing="false" text="Open Game" />
-                        <MenuItem mnemonicParsing="false" text="Save Game" />
-                        <MenuItem mnemonicParsing="false" text="back" onAction="#backHandler"/>
-                        <MenuItem mnemonicParsing="false" text="Varianta" />
-                        <MenuItem mnemonicParsing="false" text="Štatistika" />
-                        <MenuItem mnemonicParsing="false" text="Exit" />
+                        <MenuItem mnemonicParsing="false" text="Create New Game" onAction="#newGameHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Open Game" onAction="#openHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Save Game" onAction="#saveHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Undo" onAction="#undoHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Exit" onAction="#exitHandler"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="View">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Cards"/>
+                        <MenuItem mnemonicParsing="false" text="Cards" onAction="#cardsHandler"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" text="help" onAction="#helpHandler"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="...">
+                <Menu mnemonicParsing="false" text="About">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="About"/>
+                        <MenuItem mnemonicParsing="false" text="About" onAction="#aboutHandler"/>
                     </items>
                 </Menu>
             </menus>

@@ -104,6 +104,8 @@ public class GameController extends AnchorPane {
         this.updateView();
     }
 
+
+
     public void setAllElements(AbstractFactorySolitaire factory) {
         this.column1.confWorkingPack(factory.createWorkingPack(), this.history);
         this.column2.confWorkingPack(factory.createWorkingPack(), this.history);
@@ -183,7 +185,35 @@ public class GameController extends AnchorPane {
         this.goal4.updateView();
     }
 
-    public void backHandler(ActionEvent event) {
+    public void newGameHandler(ActionEvent event) {
+
+    }
+
+    public void openHandler(ActionEvent event) {
+
+    }
+
+    public void saveHandler(ActionEvent event) {
+
+    }
+
+    public void undoHandler(ActionEvent event) {
         this.undo();
+    }
+
+    public void exitHandler(ActionEvent event) {
+
+    }
+
+    public void cardsHandler(ActionEvent event) {
+
+    }
+
+    public void helpHandler(ActionEvent event) {
+
+    }
+
+    public void aboutHandler(ActionEvent event) {
+
     }
 }

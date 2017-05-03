@@ -88,23 +88,4 @@ public class MainController {
         this.stage = stage;
     }
 
-    public void variantHandler(ActionEvent event) {
-
-    }
-
-    public void statisticHandler(ActionEvent event) {
-
-    }
-
-    public void exitHandler(ActionEvent event) {
-
-    }
-
-    public void cardsHandler(ActionEvent event) {
-
-    }
-
-    public void aboutHandler(ActionEvent event) {
-
-    }
 }
