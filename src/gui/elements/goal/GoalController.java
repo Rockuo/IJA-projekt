@@ -33,8 +33,10 @@
 package gui.elements.goal;
 
 import backend.History.History;
+import gui.elements.card.CardController;
 import interfaces.CardDeck;
 import interfaces.Controller;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -47,6 +49,8 @@ import java.io.Serializable;
 public class GoalController extends AnchorPane  implements Controller {
     private CardDeck targetPack;
     private History history;
+    @FXML
+    private CardController cardImage;
 
     public GoalController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("goal.fxml"));
@@ -61,8 +65,9 @@ public class GoalController extends AnchorPane  implements Controller {
 
     public void confTargetPack(CardDeck target, History history){
         this.targetPack = target;
-        this.history =history;
+        this.history = history;
         this.setOpacity(0.2);
+        this.updateView();
     }
 
     public CardDeck save() {
@@ -71,7 +76,10 @@ public class GoalController extends AnchorPane  implements Controller {
 
     @Override
     public void updateView() {
-
+        if (!this.targetPack.isEmpty()){
+            this.setOpacity(1);
+        }
+        this.cardImage.confCard(this.targetPack.get(), this.history);
     }
 
     @Override

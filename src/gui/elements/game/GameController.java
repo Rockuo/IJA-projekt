@@ -142,10 +142,37 @@ public class GameController extends AnchorPane {
         this.goal2.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this.history);
         this.goal3.confTargetPack(factory.createTargetPack(Card.Color.DIAMONDS), this.history);
         this.goal4.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this.history);
+        generateCards();
     }
 
     public void generateCards() {
-
+        for (int i=1; i<8; i++){
+            for (int j=1; j<=i; j++){
+                switch (i){
+                    case 1: this.column1.putForce(this.pack.getCard());
+                    break;
+                    case 2: this.column2.putForce(this.pack.getCard());
+                    break;
+                    case 3: this.column3.putForce(this.pack.getCard());
+                    break;
+                    case 4: this.column4.putForce(this.pack.getCard());
+                    break;
+                    case 5: this.column5.putForce(this.pack.getCard());
+                    break;
+                    case 6: this.column6.putForce(this.pack.getCard());
+                    break;
+                    case 7: this.column7.putForce(this.pack.getCard());
+                    break;
+                }
+            }
+        }
+        this.column1.updateView();
+        this.column2.updateView();
+        this.column3.updateView();
+        this.column4.updateView();
+        this.column5.updateView();
+        this.column6.updateView();
+        this.column7.updateView();
     }
 
     public HashMap<String, Object> save() {

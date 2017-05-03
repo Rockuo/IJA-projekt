@@ -34,6 +34,7 @@ package gui.elements.column;
 
 import backend.History.History;
 import gui.elements.card.CardController;
+import interfaces.Card;
 import interfaces.CardStack;
 import interfaces.Controller;
 import javafx.fxml.FXML;
@@ -104,7 +105,6 @@ public class ColumnController extends AnchorPane implements Controller{
     public void confWorkingPack(CardStack workingPack, History history){
         this.workingPack = workingPack;
         this.history = history;
-        this.updateView();
     }
 
     public CardStack save() {
@@ -115,48 +115,55 @@ public class ColumnController extends AnchorPane implements Controller{
         return this.workingPack;
     }
 
+    public void putForce(Card card){
+        this.workingPack.putForce(card);
+    }
+
     @Override
     public void updateView(){
+        if (!this.workingPack.isEmpty()){
+            this.workingPack.get().turnFaceUp();
+        }
         for (int i=0; i<this.workingPack.size(); i++){
             switch (i){
                 case 0: this.card1.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 1: this.card2.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 2: this.card3.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 3: this.card4.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 4: this.card5.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 5: this.card6.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 6: this.card7.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 7: this.card8.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 8: this.card9.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 9: this.card10.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 10: this.card11.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 11: this.card12.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 12: this.card13.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 13: this.card14.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 14: this.card15.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 15: this.card16.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 16: this.card17.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 17: this.card18.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
                 case 18: this.card19.confCard(this.workingPack.get(i), this.history);
-                break;
+                    break;
             }
         }
     }
