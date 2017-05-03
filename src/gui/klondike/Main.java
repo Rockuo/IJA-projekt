@@ -21,8 +21,9 @@ public class Main extends Application {
         Parent root = fxmlLoader.load();
         ((MainController) fxmlLoader.getController()).setStage(primaryStage);
         primaryStage.setTitle("Solitaire");
-//        primaryStage.setScene(new Scene(root, 1536, 1060));
-        primaryStage.setScene(new Scene(root, 768, 530));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.maxHeightProperty().setValue(530);
+        primaryStage.maxWidthProperty().setValue(768);
         primaryStage.show();
     }
 

@@ -18,6 +18,7 @@
                 <Menu mnemonicParsing="false" text="Game">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Create New Game" onAction="#newGameHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Create New Tab Game" onAction="#newTabHandler"/>
                         <MenuItem mnemonicParsing="false" text="Open Game" onAction="#openGameHandler"/>
                         <MenuItem mnemonicParsing="false" text="Save Game" onAction="#saveGameHandler"/>
                         <MenuItem mnemonicParsing="false" text="Undo" onAction="#undoHandler"/>

@@ -44,15 +44,19 @@ import gui.elements.column.ColumnController;
 import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
+import gui.klondike.Main;
+import gui.klondike.MainController;
 import interfaces.CardDeck;
 import interfaces.CardStack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 
 import interfaces.Card;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -85,10 +89,19 @@ public class GameController extends AnchorPane {
     private GoalController goal3;
     @FXML
     private GoalController goal4;
+    @FXML
+    private MenuItem switcher;
 
     private History history;
+    private int id = 0;
 
-    private final FileChooser fileChooser = new FileChooser();
+    public void setDefaultValues(MainController main, int id) {
+        this.main = main;
+        this.id = id;
+    }
+    private boolean confd = false;
+    private MainController main;
+
 
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
@@ -108,9 +121,14 @@ public class GameController extends AnchorPane {
         this.updateView();
     }
 
+    public boolean isConfd() {
+        return confd;
+    }
 
-
-    public void setAllElements(AbstractFactorySolitaire factory) {
+    public void configure(AbstractFactorySolitaire factory, int id, MainController main) {
+        this.confd = true;
+        this.id = id;
+        this.main = main;
         this.column1.confWorkingPack(factory.createWorkingPack(), this.history);
         this.column2.confWorkingPack(factory.createWorkingPack(), this.history);
         this.column3.confWorkingPack(factory.createWorkingPack(), this.history);
@@ -152,28 +170,30 @@ public class GameController extends AnchorPane {
         return saved;
     }
 
-    public void open(HashMap<String, Object> data, AbstractFactorySolitaire factory) {
+    public void open(HashMap<String, Object> data, AbstractFactorySolitaire factory, int id, MainController main) {
+        this.id = id;
+        this.main = main;
         ArrayList<CardStack> columns = (ArrayList<CardStack>) data.get("columns");
         ArrayList<CardDeck> goals = (ArrayList<CardDeck>) data.get("goals");
-        this.column1.confWorkingPack(columns.get(0),this.history);
-        this.column2.confWorkingPack(columns.get(1),this.history);
-        this.column3.confWorkingPack(columns.get(2),this.history);
-        this.column4.confWorkingPack(columns.get(3),this.history);
-        this.column5.confWorkingPack(columns.get(4),this.history);
-        this.column6.confWorkingPack(columns.get(5),this.history);
-        this.column7.confWorkingPack(columns.get(6),this.history);
-        this.preview.confPreview((CardDeck) data.get("preview"),this.history);
+        this.column1.confWorkingPack(columns.get(0), this.history);
+        this.column2.confWorkingPack(columns.get(1), this.history);
+        this.column3.confWorkingPack(columns.get(2), this.history);
+        this.column4.confWorkingPack(columns.get(3), this.history);
+        this.column5.confWorkingPack(columns.get(4), this.history);
+        this.column6.confWorkingPack(columns.get(5), this.history);
+        this.column7.confWorkingPack(columns.get(6), this.history);
+        this.preview.confPreview((CardDeck) data.get("preview"), this.history);
         CardDeck deck = (CardDeck) data.get("pack");
         Card backCard = factory.createCard(Card.Color.CLUBS, 1);
         PreviewController prev = this.preview;
-        this.pack.confPack(deck, prev, backCard,this.history);
-        this.goal1.confTargetPack(goals.get(0),this.history);
-        this.goal2.confTargetPack(goals.get(1),this.history);
-        this.goal3.confTargetPack(goals.get(2),this.history);
-        this.goal4.confTargetPack(goals.get(3),this.history);
+        this.pack.confPack(deck, prev, backCard, this.history);
+        this.goal1.confTargetPack(goals.get(0), this.history);
+        this.goal2.confTargetPack(goals.get(1), this.history);
+        this.goal3.confTargetPack(goals.get(2), this.history);
+        this.goal4.confTargetPack(goals.get(3), this.history);
     }
 
-    public void updateView() {
+    private void updateView() {
         this.column1.updateView();
         this.column2.updateView();
         this.column3.updateView();
@@ -190,39 +210,27 @@ public class GameController extends AnchorPane {
     }
 
     public void newGameHandler(ActionEvent event) {
-
+        this.main.newGame(this.id);
     }
 
     public void openGameHandler(ActionEvent event) throws IOException, ClassNotFoundException {
-//        File file = fileChooser.showOpenDialog(this.stage);
-//        FileInputStream fileIn = new FileInputStream(file);
-//        ObjectInputStream in = new ObjectInputStream(fileIn);
-//        HashMap<String, Object> data = (HashMap<String, Object>) in.readObject();
-//        in.close();
-//        fileIn.close();
-//        GameController game = new GameController();
-//        game.open(data, new FactoryKlondike());
-//        this.gamePane.getChildren().remove(0);
-//        gamePane.getChildren().add(game);
+        this.main.openGame(this.id);
     }
 
     public void saveGameHandler(ActionEvent event) throws IOException {
-//        File file = fileChooser.showSaveDialog(this.stage);
-//        if (file != null) {
-//            FileOutputStream fileOut = new FileOutputStream(file);
-//            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-//            out.writeObject(games.get("1").save());
-//            out.close();
-//            fileOut.close();
-//        }
+        this.main.saveGame(this);
     }
 
     public void undoHandler(ActionEvent event) {
         this.undo();
     }
 
-    public void exitHandler(ActionEvent event) {
+    public void newTabHandler(ActionEvent event) {
+        this.main.newTab(this);
+    }
 
+    public void exitHandler(ActionEvent event) {
+        this.main.exitGame(id);
     }
 
     public void cardsHandler(ActionEvent event) {
