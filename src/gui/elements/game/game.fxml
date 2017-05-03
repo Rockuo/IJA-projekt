@@ -1,49 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import gui.elements.column.ColumnController?>
 <?import gui.elements.goal.GoalController?>
 <?import gui.elements.pack.PackController?>
 <?import gui.elements.preview.PreviewController?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<fx:root type="javafx.scene.layout.AnchorPane" fx:id="game" maxHeight="-Infinity"
-         maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="1024.0"
-         xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+
+<fx:root fx:id="game" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="768.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ColumnController fx:id="column1" layoutX="72.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <ColumnController fx:id="column2" layoutX="202.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <ColumnController fx:id="column3" layoutX="332.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <ColumnController fx:id="column4" layoutX="462.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <ColumnController fx:id="column5" layoutX="592.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <ColumnController fx:id="column6" layoutX="722.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <ColumnController fx:id="column7" layoutX="852.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="400.0" prefWidth="100.0"/>
-        <PackController fx:id="pack" layoutX="72.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
-                    style="-fx-background-radius: 10;"/>
-        <PreviewController fx:id="preview" layoutX="202.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
-                    style="-fx-background-radius: 10;"/>
-        <GoalController fx:id="goal1" layoutX="462.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
-                    style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
-        <GoalController fx:id="goal2" layoutX="592.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
-                    style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
-        <GoalController fx:id="goal3" layoutX="722.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
-                    style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
-        <GoalController fx:id="goal4" layoutX="852.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                    minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="100.0"
-                    style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;"/>
+        <MenuBar prefHeight="25.0" prefWidth="768.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Game">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Create New Game" />
+                        <MenuItem mnemonicParsing="false" text="Open Game" />
+                        <MenuItem mnemonicParsing="false" text="Save Game" />
+                        <MenuItem mnemonicParsing="false" text="Varianta" />
+                        <MenuItem mnemonicParsing="false" text="Štatistika" />
+                        <MenuItem mnemonicParsing="false" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="View">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Cards"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="...">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <ColumnController fx:id="column1" layoutX="54.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <ColumnController fx:id="column2" layoutX="152.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <ColumnController fx:id="column3" layoutX="249.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <ColumnController fx:id="column4" layoutX="347.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <ColumnController fx:id="column5" layoutX="446.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <ColumnController fx:id="column6" layoutX="542.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <ColumnController fx:id="column7" layoutX="639.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="200.0" prefWidth="75.0" />
+        <PackController fx:id="pack" layoutX="54.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="75.0" style="-fx-background-radius: 10;" />
+        <PreviewController fx:id="preview" layoutX="152.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="75.0" style="-fx-background-radius: 10;" />
+        <GoalController fx:id="goal1" layoutX="347.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="75.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;" />
+        <GoalController fx:id="goal2" layoutX="446.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="75.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;" />
+        <GoalController fx:id="goal3" layoutX="542.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="75.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;" />
+        <GoalController fx:id="goal4" layoutX="639.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="113.0" prefWidth="75.0" style="-fx-background-radius: 10; -fx-background-color: #00bfff; -fx-border-radius: 10; -fx-border-color: blue;" />
     </children>
 </fx:root>

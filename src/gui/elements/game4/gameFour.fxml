@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import gui.elements.game.GameController?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+
+<fx:root fx:id="gameFour" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1060.0" prefWidth="1536.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="530.0" prefWidth="768.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GameController fx:id="game1" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="768.0" prefHeight="530.0" prefWidth="768.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GameController fx:id="game2" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="530.0" prefHeight="530.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <GameController fx:id="game3"/>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="768.0" layoutY="530.0" prefHeight="530.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <GameController fx:id="game4" />
+         </children>
+      </AnchorPane>
+      <Line endX="768.0" endY="1060.0" startX="768.0" startY="0.0" />
+      <Line endX="1536.0" endY="530.0" startX="0.0" startY="530.0" />
+   </children>
+</fx:root>
