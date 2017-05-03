@@ -32,7 +32,9 @@
 
 package gui.elements.goal;
 
+import backend.History.History;
 import interfaces.CardDeck;
+import interfaces.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -42,8 +44,9 @@ import java.io.Serializable;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class GoalController extends AnchorPane  implements Serializable {
+public class GoalController extends AnchorPane  implements Controller {
     private CardDeck targetPack;
+    private History history;
 
     public GoalController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("goal.fxml"));
@@ -56,11 +59,22 @@ public class GoalController extends AnchorPane  implements Serializable {
         }
     }
 
-    public void setTargetPack(CardDeck target){
+    public void confTargetPack(CardDeck target, History history){
         this.targetPack = target;
+        this.history =history;
     }
 
     public CardDeck save() {
         return this.targetPack;
+    }
+
+    @Override
+    public void updateView() {
+
+    }
+
+    @Override
+    public void resize(boolean big) {
+
     }
 }

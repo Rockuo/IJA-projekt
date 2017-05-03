@@ -32,7 +32,9 @@
 
 package gui.elements.column;
 
+import backend.History.History;
 import interfaces.CardStack;
+import interfaces.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -42,8 +44,10 @@ import java.io.Serializable;
 /**
  *
  */
-public class ColumnController extends AnchorPane implements Serializable{
+public class ColumnController extends AnchorPane implements Controller{
     private CardStack workingPack;
+    private boolean big = true;
+    private History history;
 
     public ColumnController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("column.fxml"));
@@ -56,11 +60,26 @@ public class ColumnController extends AnchorPane implements Serializable{
         }
     }
 
-    public void setWorkingPack(CardStack workingPack){
+    public void confWorkingPack(CardStack workingPack, History history){
         this.workingPack = workingPack;
+        this.history = history;
     }
 
     public CardStack save() {
         return this.workingPack;
+    }
+
+    public CardStack getBackend() {
+        return this.workingPack;
+    }
+
+    @Override
+    public void updateView(){
+
+    }
+
+    @Override
+    public void resize(boolean big) {
+
     }
 }

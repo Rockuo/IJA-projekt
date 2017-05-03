@@ -9,13 +9,10 @@ public class CardB implements Card {
     private int value;
     private Color color;
     private boolean faceUp = false;
-    private ArrayList<Map<String, Object>> memory;
-    private static final int memoryMax = 1;
 
     public CardB(Color color, int value) {
         this.color = color;
         this.value = value;
-        this.memory = new ArrayList<>(CardB.memoryMax);
     }
 
     @Override

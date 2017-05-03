@@ -32,6 +32,7 @@
 
 package gui.elements.preview;
 
+import backend.History.History;
 import gui.elements.card.CardController;
 import interfaces.CardDeck;
 import javafx.fxml.FXML;
@@ -52,6 +53,7 @@ public class PreviewController extends AnchorPane implements Serializable {
     private CardDeck preview;
     @FXML
     private CardController cardFX;
+    private History history;
 
     public PreviewController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
@@ -64,8 +66,9 @@ public class PreviewController extends AnchorPane implements Serializable {
         }
     }
 
-    public void setPreview(CardDeck preview) {
+    public void confPreview(CardDeck preview, History history) {
         this.preview = preview;
+        this.history = history;
         updateView();
     }
 
@@ -84,10 +87,14 @@ public class PreviewController extends AnchorPane implements Serializable {
 
     public void updateView() {
         if(this.preview.isEmpty()) {
-            cardFX.setCard(null);
+            cardFX.confCard(null, this.history);
         }else {
-            cardFX.setCard(this.preview.top());
+            cardFX.confCard(this.preview.get(), this.history);
         }
+    }
+
+    public CardDeck getDeck() {
+        return this.preview;
     }
 
     public CardDeck save() {

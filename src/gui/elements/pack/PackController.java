@@ -32,10 +32,15 @@
 
 package gui.elements.pack;
 
+import backend.History.CommandCls;
+import backend.History.History;
+import backend.History.PrevToPackCommand;
 import gui.elements.card.CardController;
 import gui.elements.preview.PreviewController;
 import interfaces.Card;
 import interfaces.CardDeck;
+import interfaces.Command;
+import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
@@ -43,20 +48,19 @@ import javafx.scene.layout.AnchorPane;
 
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PackController extends AnchorPane{
+public class PackController extends AnchorPane implements Controller{
 
     private CardDeck cardDeck;
     private PreviewController preview;
     @FXML
     private CardController cardFX;
     private Card backCard;
+    private History history;
 
     public PackController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pack.fxml"));
@@ -70,11 +74,12 @@ public class PackController extends AnchorPane{
         this.setOnMouseClicked(this::mouseClick);
     }
 
-    public void confPack(CardDeck deck, PreviewController preview, Card backCard) {
+    public void confPack(CardDeck deck, PreviewController preview, Card backCard, History history) {
         this.cardDeck = deck;
         this.preview = preview;
         this.backCard = backCard;
-        this.cardFX.setCard(this.backCard);
+        this.history = history;
+        this.cardFX.confCard(this.backCard, history);
     }
 
     public Card getCard() {
@@ -89,18 +94,30 @@ public class PackController extends AnchorPane{
             for (int i = 0; i < size; i++) {
                 this.cardDeck.put(cards.remove(0));
             }
-            this.cardFX.setCard(this.backCard);
+            this.cardFX.confCard(this.backCard, this.history);
+            this.history.add(new PrevToPackCommand(this.preview.getDeck(), this.cardDeck));
         } else {
             Card card = this.cardDeck.pop();
             card.turnFaceUp();
             preview.addCard(card);
             if(this.cardDeck.isEmpty()){
-                this.cardFX.setCard(null);
+                this.cardFX.confCard(null, this.history);
             }
+            this.history.add(new CommandCls(this.cardDeck, this.preview.getDeck(),null));
         }
     }
 
     public CardDeck save(){
         return this.cardDeck;
+    }
+
+    @Override
+    public void updateView() {
+
+    }
+
+    @Override
+    public void resize(boolean big) {
+
     }
 }

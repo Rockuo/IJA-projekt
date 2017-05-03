@@ -32,6 +32,7 @@
 
 package gui.elements.card;
 
+import backend.History.History;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -51,7 +52,7 @@ public class CardController extends AnchorPane{
     @FXML
     private ImageView cardImage;
     private Card card = null;
-
+    private History history;
 
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
@@ -64,8 +65,9 @@ public class CardController extends AnchorPane{
         }
     }
 
-    public void setCard(Card card) {
+    public void confCard(Card card, History history) {
         this.card = card;
+        this.history = history;
         this.updateView();
     }
 

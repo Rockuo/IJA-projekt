@@ -1,7 +1,9 @@
 package backend;
 
+import backend.History.History;
 import interfaces.Card;
 import interfaces.CardDeck;
+import interfaces.CardStack;
 
 import java.util.*;
 
@@ -10,13 +12,10 @@ public class CardDeckB implements CardDeck {
     protected Stack<Card> stack;
     private int maxSize;
     private Card.Color color = null;
-    protected ArrayList<Map<String, Object>> memory;
-    protected static final int memoryMax = 6;
 
     public CardDeckB() {
         this.stack = new Stack<>();
         this.maxSize = 52;
-        this.memory = new ArrayList<>(CardDeckB.memoryMax);
     }
 
     public CardDeckB(int maxSize) {
@@ -34,14 +33,12 @@ public class CardDeckB implements CardDeck {
             int index = random.nextInt(i + 1);
             this.stack.push(cardBArrayList.remove(index));
         }
-        this.memory = new ArrayList<>(CardDeckB.memoryMax);
     }
 
     public CardDeckB(int maxSize, Card.Color color) {
         this.maxSize = maxSize;
         this.stack = new Stack<Card>();
         this.color = color;
-        this.memory = new ArrayList<>(CardDeckB.memoryMax);
     }
 
     @Override
@@ -107,7 +104,8 @@ public class CardDeckB implements CardDeck {
         return this.stack.size();
     }
 
-    public Card top() {
-        return this.stack.peek();
+    @Override
+    public void putForce(Card card) {
+        this.stack.push(card);
     }
 }

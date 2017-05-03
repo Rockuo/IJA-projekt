@@ -1,5 +1,7 @@
 package interfaces;
 
+import backend.History.History;
+
 import java.io.Serializable;
 
 public interface Card extends Serializable{
@@ -44,5 +46,4 @@ public interface Card extends Serializable{
     boolean similarColorTo(Card c);
 
     int compareValue(Card c);
-
 }

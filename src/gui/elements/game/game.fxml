@@ -20,6 +20,7 @@
                         <MenuItem mnemonicParsing="false" text="Create New Game" />
                         <MenuItem mnemonicParsing="false" text="Open Game" />
                         <MenuItem mnemonicParsing="false" text="Save Game" />
+                        <MenuItem mnemonicParsing="false" text="back" onAction="#backHandler"/>
                         <MenuItem mnemonicParsing="false" text="Varianta" />
                         <MenuItem mnemonicParsing="false" text="Štatistika" />
                         <MenuItem mnemonicParsing="false" text="Exit" />

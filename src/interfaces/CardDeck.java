@@ -16,5 +16,5 @@ public interface CardDeck extends Serializable {
 
     int size();
 
-    Card top();
+    void putForce(Card card);
 }

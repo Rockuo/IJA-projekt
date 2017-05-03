@@ -34,18 +34,18 @@ package gui.elements.game;
 
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
 
 import abstractFactories.AbstractFactorySolitaire;
+import backend.History.History;
 import gui.elements.column.ColumnController;
 import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
 import interfaces.CardDeck;
 import interfaces.CardStack;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -84,6 +84,8 @@ public class GameController extends AnchorPane {
     @FXML
     private GoalController goal4;
 
+    private History history;
+
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
         fxmlLoader.setRoot(this);
@@ -94,22 +96,28 @@ public class GameController extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        this.history = new History();
+    }
+
+    public void undo() {
+        this.history.undo();
+        this.updateView();
     }
 
     public void setAllElements(AbstractFactorySolitaire factory) {
-        this.column1.setWorkingPack(factory.createWorkingPack());
-        this.column2.setWorkingPack(factory.createWorkingPack());
-        this.column3.setWorkingPack(factory.createWorkingPack());
-        this.column4.setWorkingPack(factory.createWorkingPack());
-        this.column5.setWorkingPack(factory.createWorkingPack());
-        this.column6.setWorkingPack(factory.createWorkingPack());
-        this.column7.setWorkingPack(factory.createWorkingPack());
-        this.preview.setPreview(factory.createPreview());
-        this.pack.confPack(factory.createCardDeck(), this.preview, factory.createCard(Card.Color.CLUBS, 1));
-        this.goal1.setTargetPack(factory.createTargetPack(Card.Color.SPADES));
-        this.goal2.setTargetPack(factory.createTargetPack(Card.Color.CLUBS));
-        this.goal3.setTargetPack(factory.createTargetPack(Card.Color.DIAMONDS));
-        this.goal4.setTargetPack(factory.createTargetPack(Card.Color.HEARTS));
+        this.column1.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.column2.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.column3.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.column4.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.column5.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.column6.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.column7.confWorkingPack(factory.createWorkingPack(), this.history);
+        this.preview.confPreview(factory.createPreview(), this.history);
+        this.pack.confPack(factory.createCardDeck(), this.preview, factory.createCard(Card.Color.CLUBS, 1), this.history);
+        this.goal1.confTargetPack(factory.createTargetPack(Card.Color.SPADES), this.history);
+        this.goal2.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this.history);
+        this.goal3.confTargetPack(factory.createTargetPack(Card.Color.DIAMONDS), this.history);
+        this.goal4.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this.history);
     }
 
     public void generateCards() {
@@ -141,21 +149,41 @@ public class GameController extends AnchorPane {
     public void open(HashMap<String, Object> data, AbstractFactorySolitaire factory) {
         ArrayList<CardStack> columns = (ArrayList<CardStack>) data.get("columns");
         ArrayList<CardDeck> goals = (ArrayList<CardDeck>) data.get("goals");
-        this.column1.setWorkingPack(columns.get(0));
-        this.column2.setWorkingPack(columns.get(1));
-        this.column3.setWorkingPack(columns.get(2));
-        this.column4.setWorkingPack(columns.get(3));
-        this.column5.setWorkingPack(columns.get(4));
-        this.column6.setWorkingPack(columns.get(5));
-        this.column7.setWorkingPack(columns.get(6));
-        this.preview.setPreview((CardDeck) data.get("preview"));
+        this.column1.confWorkingPack(columns.get(0),this.history);
+        this.column2.confWorkingPack(columns.get(1),this.history);
+        this.column3.confWorkingPack(columns.get(2),this.history);
+        this.column4.confWorkingPack(columns.get(3),this.history);
+        this.column5.confWorkingPack(columns.get(4),this.history);
+        this.column6.confWorkingPack(columns.get(5),this.history);
+        this.column7.confWorkingPack(columns.get(6),this.history);
+        this.preview.confPreview((CardDeck) data.get("preview"),this.history);
         CardDeck deck = (CardDeck) data.get("pack");
         Card backCard = factory.createCard(Card.Color.CLUBS, 1);
         PreviewController prev = this.preview;
-        this.pack.confPack(deck, prev, backCard);
-        this.goal1.setTargetPack(goals.get(0));
-        this.goal2.setTargetPack(goals.get(1));
-        this.goal3.setTargetPack(goals.get(2));
-        this.goal4.setTargetPack(goals.get(3));
+        this.pack.confPack(deck, prev, backCard,this.history);
+        this.goal1.confTargetPack(goals.get(0),this.history);
+        this.goal2.confTargetPack(goals.get(1),this.history);
+        this.goal3.confTargetPack(goals.get(2),this.history);
+        this.goal4.confTargetPack(goals.get(3),this.history);
+    }
+
+    private void updateView() {
+        this.column1.updateView();
+        this.column2.updateView();
+        this.column3.updateView();
+        this.column4.updateView();
+        this.column5.updateView();
+        this.column6.updateView();
+        this.column7.updateView();
+        this.preview.updateView();
+        this.pack.updateView();
+        this.goal1.updateView();
+        this.goal2.updateView();
+        this.goal3.updateView();
+        this.goal4.updateView();
+    }
+
+    public void backHandler(ActionEvent event) {
+        this.undo();
     }
 }

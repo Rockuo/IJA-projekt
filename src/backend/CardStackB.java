@@ -78,6 +78,23 @@ public class CardStackB extends CardDeckB implements CardStack {
         return true;
     }
 
+    @Override
+    public void putForce(CardStack stack) { // todo DRY
+        Stack<Card> fakeStack = ((CardStackB)stack).getClonedStack();
+        Stack<Card> tmpStack = new Stack<Card>();
+        while (!fakeStack.isEmpty()) {
+            tmpStack.push(fakeStack.pop());
+        }
+        while (!tmpStack.empty()) {
+            this.stack.push(tmpStack.pop());
+        }
+    }
+
+    @Override
+    public void putForce(Card card) {
+        this.stack.push(card);
+    }
+
     @SuppressWarnings("unchecked")
     private Stack<Card> getClonedStack(){
         Object clone = this.stack.clone();
