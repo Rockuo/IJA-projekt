@@ -19,7 +19,7 @@ public class FactoryKlondike extends AbstractFactorySolitaire  implements Serial
 
     @Override
     public CardDeck createCardDeck() {
-        return new CardDeckB(52);
+        return new CardDeckB(4);
     }
 
     @Override

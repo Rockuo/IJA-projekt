@@ -8,12 +8,12 @@ import interfaces.Command;
 /**
  * Created by rockuo on 3.5.17.
  */
-public class CommandCls implements Command {
+public class CommonCommand implements Command {
     private CardDeck src;
     private CardDeck dest;
     private Card card;
 
-    public CommandCls(CardDeck src, CardDeck dest, Card card) {
+    public CommonCommand(CardDeck src, CardDeck dest, Card card) {
         this.card = card;
         this.src = src;
         this.dest = dest;
