@@ -111,6 +111,7 @@ public class PackController extends AnchorPane implements Controller{
     public void updateView() {
         if (this.cardDeck.isEmpty()) {
             this.cardFX.confCard(null, this.history);
+            this.cardFX.setCircle();
         } else {
             this.cardFX.confCard(this.backCard, this.history);
         }

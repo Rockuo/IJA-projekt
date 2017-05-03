@@ -53,6 +53,7 @@ public class CardController extends AnchorPane{
     private ImageView cardImage;
     private Card card = null;
     private History history;
+    private  boolean circle = false;
 
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
@@ -80,8 +81,17 @@ public class CardController extends AnchorPane{
             }
             imagePath = getClass().getResource("../../images/cardPack/" + name + ".png").toString();
         } else {
-            imagePath = getClass().getResource("../../images/goal.png").toString(); // todo
+            if (circle){    //todo dat mimo IF a v PackController nechat iba circle, zmazat to 2.
+                imagePath = getClass().getResource("../../images/circle.png").toString();
+            }else {
+                imagePath = getClass().getResource("../../images/goal.png").toString();
+            }
         }
         cardImage.setImage(new Image(imagePath));
+    }
+
+    public void setCircle(){
+        this.circle = true;
+        this.updateView();
     }
 }
