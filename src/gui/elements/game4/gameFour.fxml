@@ -27,6 +27,6 @@
          </children>
       </AnchorPane>
       <Line endX="768.0" endY="1060.0" startX="768.0" startY="0.0" />
-      <Line endX="1536.0" endY="530.0" startX="0.0" startY="530.0" />
+      <Line endX="1536.0" endY="515.0" startX="0.0" startY="515.0" />
    </children>
 </fx:root>
