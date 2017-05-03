@@ -33,12 +33,13 @@
 package gui.elements.game;
 
 
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import abstractFactories.AbstractFactorySolitaire;
 import backend.History.History;
+import factories.FactoryKlondike;
 import gui.elements.column.ColumnController;
 import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
@@ -51,6 +52,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import interfaces.Card;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -85,6 +87,8 @@ public class GameController extends AnchorPane {
     private GoalController goal4;
 
     private History history;
+
+    private final FileChooser fileChooser = new FileChooser();
 
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("game.fxml"));
@@ -189,13 +193,29 @@ public class GameController extends AnchorPane {
 
     }
 
-    public void openHandler(ActionEvent event) {
-
-    }
-
-    public void saveHandler(ActionEvent event) {
-
-    }
+//    public void openGameHandler(ActionEvent event) throws IOException, ClassNotFoundException {
+//        File file = fileChooser.showOpenDialog(this.stage);
+//        FileInputStream fileIn = new FileInputStream(file);
+//        ObjectInputStream in = new ObjectInputStream(fileIn);
+//        HashMap<String, Object> data = (HashMap<String, Object>) in.readObject();
+//        in.close();
+//        fileIn.close();
+//        GameController game = new GameController();
+//        game.open(data, new FactoryKlondike());
+//        this.gamePane.getChildren().remove(0);
+//        gamePane.getChildren().add(game);
+//    }
+//
+//    public void saveGameHandler(ActionEvent event) throws IOException {
+//        File file = fileChooser.showSaveDialog(this.stage);
+//        if (file != null) {
+//            FileOutputStream fileOut = new FileOutputStream(file);
+//            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+//            out.writeObject(games.get("1").save());
+//            out.close();
+//            fileOut.close();
+//        }
+//    }
 
     public void undoHandler(ActionEvent event) {
         this.undo();
