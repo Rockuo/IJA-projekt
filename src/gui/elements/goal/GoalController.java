@@ -62,6 +62,7 @@ public class GoalController extends AnchorPane  implements Controller {
     public void confTargetPack(CardDeck target, History history){
         this.targetPack = target;
         this.history =history;
+        this.setOpacity(0.2);
     }
 
     public CardDeck save() {

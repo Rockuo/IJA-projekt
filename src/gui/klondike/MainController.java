@@ -29,11 +29,11 @@ public class MainController {
     public void initialize() throws IOException, ClassNotFoundException {
         AbstractFactorySolitaire factory = new FactoryKlondike();
         this.games = new HashMap<>();
-        GameFourController fGame = new GameFourController();
-        fGame.configGame(2, factory);
-//        GameController fGame = new GameController();
-//        fGame.setAllElements(factory);
-//        this.games.put("1", fGame);
+//        GameFourController fGame = new GameFourController();
+//        fGame.configGame(2, factory);
+        GameController fGame = new GameController();
+        fGame.setAllElements(factory);
+        this.games.put("1", fGame);
         this.gamePane.getChildren().add(fGame);
     }
 
