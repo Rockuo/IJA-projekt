@@ -32,14 +32,13 @@
 
 package gui.elements.pack;
 
-import backend.History.CommandCls;
+import backend.History.CommonCommand;
 import backend.History.History;
 import backend.History.PrevToPackCommand;
 import gui.elements.card.CardController;
 import gui.elements.preview.PreviewController;
 import interfaces.Card;
 import interfaces.CardDeck;
-import interfaces.Command;
 import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -94,17 +93,14 @@ public class PackController extends AnchorPane implements Controller{
             for (int i = 0; i < size; i++) {
                 this.cardDeck.put(cards.remove(0));
             }
-            this.cardFX.confCard(this.backCard, this.history);
             this.history.add(new PrevToPackCommand(this.preview.getDeck(), this.cardDeck));
         } else {
             Card card = this.cardDeck.pop();
             card.turnFaceUp();
             preview.addCard(card);
-            if(this.cardDeck.isEmpty()){
-                this.cardFX.confCard(null, this.history);
-            }
-            this.history.add(new CommandCls(this.cardDeck, this.preview.getDeck(),null));
+            this.history.add(new CommonCommand(this.cardDeck, this.preview.getDeck(),null));
         }
+        this.updateView();
     }
 
     public CardDeck save(){
@@ -113,7 +109,11 @@ public class PackController extends AnchorPane implements Controller{
 
     @Override
     public void updateView() {
-
+        if (this.cardDeck.isEmpty()) {
+            this.cardFX.confCard(null, this.history);
+        } else {
+            this.cardFX.confCard(this.backCard, this.history);
+        }
     }
 
     @Override
