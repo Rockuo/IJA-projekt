@@ -47,13 +47,13 @@ import java.io.Serializable;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class CardController extends AnchorPane{
+public class CardController extends AnchorPane {
 
     @FXML
     private ImageView cardImage;
     private Card card = null;
     private History history;
-    private  boolean circle = false;
+    private String defaultImage = "goal";
 
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));
@@ -81,17 +81,12 @@ public class CardController extends AnchorPane{
             }
             imagePath = getClass().getResource("../../images/cardPack/" + name + ".png").toString();
         } else {
-            if (circle){    //todo dat mimo IF a v PackController nechat iba circle, zmazat to 2.
-                imagePath = getClass().getResource("../../images/circle.png").toString();
-            }else {
-                imagePath = getClass().getResource("../../images/goal.png").toString();
-            }
+            imagePath = getClass().getResource("../../images/" + this.defaultImage + ".png").toString();
         }
         cardImage.setImage(new Image(imagePath));
     }
 
-    public void setCircle(){
-        this.circle = true;
-        this.updateView();
+    public void setDefaultImage(String name) {
+        this.defaultImage = name;
     }
 }
