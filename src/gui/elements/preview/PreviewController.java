@@ -92,8 +92,10 @@ public class PreviewController extends AnchorPane implements Controller {
     public void updateView() {
         if(this.preview.isEmpty()) {
             cardFX.confCard(null, this.history);
+            this.setOpacity(0);
         }else {
             cardFX.confCard(this.preview.get(), this.history);
+            this.setOpacity(1);
         }
     }
 
