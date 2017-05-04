@@ -32,12 +32,18 @@
 
 package gui.elements.goal;
 
+import backend.History.CommonCommand;
 import backend.History.History;
+import backend.History.Logger;
 import gui.elements.card.CardController;
 import interfaces.CardDeck;
 import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -61,6 +67,10 @@ public class GoalController extends AnchorPane  implements Controller {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        this.setOnDragDetected(this::dragFrom);
+        this.setOnDragOver(this::dragOver);
+        this.setOnDragDropped(this::dragDropped);
     }
 
     public void confTargetPack(CardDeck target, History history){
@@ -85,5 +95,30 @@ public class GoalController extends AnchorPane  implements Controller {
     @Override
     public void resize(boolean big) {
 
+    }
+
+    private void dragFrom(MouseEvent event) {
+        if(this.targetPack.isEmpty()) return;
+        ClipboardContent content = new ClipboardContent();
+        content.putString("");
+        this.startDragAndDrop(TransferMode.ANY).setContent(content);
+        event.consume();
+    }
+
+    private void dragOver(DragEvent event) {
+        if (event.getGestureSource() != this) {
+            event.acceptTransferModes(TransferMode.MOVE);
+        }
+        event.consume();
+    }
+
+    private void dragDropped(DragEvent event) {
+        Logger.setDest(this.targetPack);
+        CommonCommand command = new CommonCommand();
+        if(command.exec()){
+            this.history.add(command);
+            this.updateView();
+        }
+        event.consume();
     }
 }

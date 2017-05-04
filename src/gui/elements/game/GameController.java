@@ -46,15 +46,15 @@ import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
 import gui.klondike.Main;
 import gui.klondike.MainController;
-import interfaces.CardDeck;
-import interfaces.CardStack;
+import interfaces.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 
-import interfaces.Card;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -142,7 +142,7 @@ public class GameController extends AnchorPane {
         this.goal2.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this.history);
         this.goal3.confTargetPack(factory.createTargetPack(Card.Color.DIAMONDS), this.history);
         this.goal4.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this.history);
-        generateCards();
+//        generateCards();
     }
 
     public void generateCards() {
@@ -234,6 +234,10 @@ public class GameController extends AnchorPane {
         this.goal2.updateView();
         this.goal3.updateView();
         this.goal4.updateView();
+    }
+
+    public void addToHistory(Command command) {
+        this.history.add(command);
     }
 
     public void newGameHandler(ActionEvent event) {
