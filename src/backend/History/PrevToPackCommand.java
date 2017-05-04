@@ -21,4 +21,10 @@ public class PrevToPackCommand implements Command {
             this.prev.put(this.pack.pop());
         }
     }
+
+    @Override
+    public boolean exec() {
+        //todo
+        return false;
+    }
 }

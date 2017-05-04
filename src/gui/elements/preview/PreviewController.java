@@ -113,7 +113,6 @@ public class PreviewController extends AnchorPane implements Controller {
     }
 
     private void dragFrom(MouseEvent event) {
-        System.out.print("game From");
         if(this.preview.isEmpty()) return;
         Logger.clean();
         Logger.setSrc(this.preview);

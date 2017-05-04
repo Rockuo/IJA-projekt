@@ -5,4 +5,6 @@ package interfaces;
  */
 public interface Command {
     void undo();
+
+    boolean exec();
 }
