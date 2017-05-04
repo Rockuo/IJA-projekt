@@ -35,6 +35,7 @@ package gui.elements.preview;
 import backend.History.History;
 import backend.History.Logger;
 import gui.elements.card.CardController;
+import gui.elements.game.GameController;
 import interfaces.CardDeck;
 import interfaces.Controller;
 import javafx.fxml.FXML;
@@ -56,7 +57,7 @@ public class PreviewController extends AnchorPane implements Controller {
     private CardDeck preview;
     @FXML
     private CardController cardFX;
-    private History history;
+    private GameController game;
 
     public PreviewController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("preview.fxml"));
@@ -70,9 +71,9 @@ public class PreviewController extends AnchorPane implements Controller {
         this.setOnDragDetected(this::dragFrom);
     }
 
-    public void confPreview(CardDeck preview, History history) {
+    public void confPreview(CardDeck preview, GameController game) {
         this.preview = preview;
-        this.history = history;
+        this.game = game;
         updateView();
     }
 
@@ -91,10 +92,10 @@ public class PreviewController extends AnchorPane implements Controller {
 
     public void updateView() {
         if(this.preview.isEmpty()) {
-            cardFX.confCard(null, this.history);
+            cardFX.confCard(null, this.game);
             this.setOpacity(0);
         }else {
-            cardFX.confCard(this.preview.get(), this.history);
+            cardFX.confCard(this.preview.get(), this.game);
             this.setOpacity(1);
         }
     }

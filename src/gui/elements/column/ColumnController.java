@@ -34,6 +34,7 @@ package gui.elements.column;
 
 import backend.History.History;
 import gui.elements.card.CardController;
+import gui.elements.game.GameController;
 import interfaces.Card;
 import interfaces.CardStack;
 import interfaces.Controller;
@@ -50,7 +51,7 @@ import java.io.Serializable;
 public class ColumnController extends AnchorPane implements Controller{
     private CardStack workingPack;
     private boolean big = true;
-    private History history;
+    private GameController game;
 
     @FXML
     private CardController card1;
@@ -102,9 +103,9 @@ public class ColumnController extends AnchorPane implements Controller{
         }
     }
 
-    public void confWorkingPack(CardStack workingPack, History history){
+    public void confWorkingPack(CardStack workingPack, GameController game){
         this.workingPack = workingPack;
-        this.history = history;
+        this.game = game;
     }
 
     public CardStack save() {
@@ -126,43 +127,43 @@ public class ColumnController extends AnchorPane implements Controller{
         }
         for (int i=0; i<this.workingPack.size(); i++){
             switch (i){
-                case 0: this.card1.confCard(this.workingPack.get(i), this.history);
+                case 0: this.card1.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 1: this.card2.confCard(this.workingPack.get(i), this.history);
+                case 1: this.card2.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 2: this.card3.confCard(this.workingPack.get(i), this.history);
+                case 2: this.card3.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 3: this.card4.confCard(this.workingPack.get(i), this.history);
+                case 3: this.card4.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 4: this.card5.confCard(this.workingPack.get(i), this.history);
+                case 4: this.card5.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 5: this.card6.confCard(this.workingPack.get(i), this.history);
+                case 5: this.card6.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 6: this.card7.confCard(this.workingPack.get(i), this.history);
+                case 6: this.card7.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 7: this.card8.confCard(this.workingPack.get(i), this.history);
+                case 7: this.card8.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 8: this.card9.confCard(this.workingPack.get(i), this.history);
+                case 8: this.card9.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 9: this.card10.confCard(this.workingPack.get(i), this.history);
+                case 9: this.card10.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 10: this.card11.confCard(this.workingPack.get(i), this.history);
+                case 10: this.card11.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 11: this.card12.confCard(this.workingPack.get(i), this.history);
+                case 11: this.card12.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 12: this.card13.confCard(this.workingPack.get(i), this.history);
+                case 12: this.card13.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 13: this.card14.confCard(this.workingPack.get(i), this.history);
+                case 13: this.card14.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 14: this.card15.confCard(this.workingPack.get(i), this.history);
+                case 14: this.card15.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 15: this.card16.confCard(this.workingPack.get(i), this.history);
+                case 15: this.card16.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 16: this.card17.confCard(this.workingPack.get(i), this.history);
+                case 16: this.card17.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 17: this.card18.confCard(this.workingPack.get(i), this.history);
+                case 17: this.card18.confCard(this.workingPack.get(i), this.game);
                     break;
-                case 18: this.card19.confCard(this.workingPack.get(i), this.history);
+                case 18: this.card19.confCard(this.workingPack.get(i), this.game);
                     break;
             }
         }

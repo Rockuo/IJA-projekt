@@ -25,6 +25,6 @@ public class PrevToPackCommand implements Command {
     @Override
     public boolean exec() {
         //todo
-        return false;
+        return true;
     }
 }

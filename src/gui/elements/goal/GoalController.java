@@ -33,8 +33,8 @@
 package gui.elements.goal;
 
 import backend.History.CommonCommand;
-import backend.History.History;
 import backend.History.Logger;
+import gui.elements.game.GameController;
 import gui.elements.card.CardController;
 import interfaces.CardDeck;
 import interfaces.Controller;
@@ -54,7 +54,7 @@ import java.io.Serializable;
  */
 public class GoalController extends AnchorPane  implements Controller {
     private CardDeck targetPack;
-    private History history;
+    private GameController game;
     @FXML
     private CardController cardImage;
 
@@ -73,9 +73,9 @@ public class GoalController extends AnchorPane  implements Controller {
         this.setOnDragDropped(this::dragDropped);
     }
 
-    public void confTargetPack(CardDeck target, History history){
+    public void confTargetPack(CardDeck target, GameController game){
         this.targetPack = target;
-        this.history = history;
+        this.game = game;
         this.setOpacity(0.2);
         this.updateView();
     }
@@ -89,7 +89,7 @@ public class GoalController extends AnchorPane  implements Controller {
         if (!this.targetPack.isEmpty()){
             this.setOpacity(1);
         }
-        this.cardImage.confCard(this.targetPack.get(), this.history);
+        this.cardImage.confCard(this.targetPack.get(), this.game);
     }
 
     @Override
@@ -118,8 +118,8 @@ public class GoalController extends AnchorPane  implements Controller {
         Logger.setDest(this.targetPack);
         CommonCommand command = new CommonCommand();
         if(command.exec()){
-            this.history.add(command);
-            this.updateView();
+            this.game.addToHistory(command);
+            this.game.updateView();
         }
         event.consume();
     }

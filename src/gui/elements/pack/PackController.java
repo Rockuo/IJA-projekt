@@ -36,9 +36,11 @@ import backend.History.CommonCommand;
 import backend.History.History;
 import backend.History.PrevToPackCommand;
 import gui.elements.card.CardController;
+import gui.elements.game.GameController;
 import gui.elements.preview.PreviewController;
 import interfaces.Card;
 import interfaces.CardDeck;
+import interfaces.Command;
 import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,7 +61,7 @@ public class PackController extends AnchorPane implements Controller{
     @FXML
     private CardController cardFX;
     private Card backCard;
-    private History history;
+    private GameController game;
 
     public PackController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("pack.fxml"));
@@ -73,12 +75,12 @@ public class PackController extends AnchorPane implements Controller{
         this.setOnMouseClicked(this::mouseClick);
     }
 
-    public void confPack(CardDeck deck, PreviewController preview, Card backCard, History history) {
+    public void confPack(CardDeck deck, PreviewController preview, Card backCard, GameController game) {
         this.cardDeck = deck;
         this.preview = preview;
         this.backCard = backCard;
-        this.history = history;
-        this.cardFX.confCard(this.backCard, history);
+        this.game = game;
+        this.cardFX.confCard(this.backCard, game);
         this.cardFX.setDefaultImage("circle");
     }
 
@@ -94,12 +96,12 @@ public class PackController extends AnchorPane implements Controller{
             for (int i = 0; i < size; i++) {
                 this.cardDeck.put(cards.remove(0));
             }
-            this.history.add(new PrevToPackCommand(this.preview.getDeck(), this.cardDeck));
+            this.game.addToHistory(new PrevToPackCommand(this.preview.getDeck(), this.cardDeck));
         } else {
             Card card = this.cardDeck.pop();
             card.turnFaceUp();
             preview.addCard(card);
-            this.history.add(new CommonCommand(this.cardDeck, this.preview.getDeck(),null));
+            this.game.addToHistory(new CommonCommand(this.cardDeck, this.preview.getDeck(),null));
         }
         this.updateView();
     }
@@ -111,9 +113,9 @@ public class PackController extends AnchorPane implements Controller{
     @Override
     public void updateView() {
         if (this.cardDeck.isEmpty()) {
-            this.cardFX.confCard(null, this.history);
+            this.cardFX.updateCard(null);
         } else {
-            this.cardFX.confCard(this.backCard, this.history);
+            this.cardFX.updateCard(this.backCard);
         }
     }
 

@@ -33,6 +33,7 @@
 package gui.elements.card;
 
 import backend.History.History;
+import gui.elements.game.GameController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -52,7 +53,7 @@ public class CardController extends AnchorPane {
     @FXML
     private ImageView cardImage;
     private Card card = null;
-    private History history;
+    private GameController game;
     private String defaultImage = "goal";
 
     public CardController() {
@@ -66,9 +67,14 @@ public class CardController extends AnchorPane {
         }
     }
 
-    public void confCard(Card card, History history) {
+    public void confCard(Card card, GameController game) {
         this.card = card;
-        this.history = history;
+        this.game = game;
+        this.updateView();
+    }
+
+    public void updateCard(Card card) {
+        this.card = card;
         this.updateView();
     }
 

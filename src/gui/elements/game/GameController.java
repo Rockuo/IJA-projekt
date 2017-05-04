@@ -1,35 +1,3 @@
-/*
- * Copyright (c) 2011, 2014 Oracle and/or its affiliates.
- * All rights reserved. Use is subject to license terms.
- *
- * This file is available and licensed under the following license:
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *  - Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- *  - Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in
- *    the documentation and/or other materials provided with the distribution.
- *  - Neither the name of Oracle nor the names of its
- *    contributors may be used to endorse or promote products derived
- *    from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
 package gui.elements.game;
 
 
@@ -129,20 +97,20 @@ public class GameController extends AnchorPane {
         this.confd = true;
         this.id = id;
         this.main = main;
-        this.column1.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.column2.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.column3.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.column4.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.column5.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.column6.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.column7.confWorkingPack(factory.createWorkingPack(), this.history);
-        this.preview.confPreview(factory.createPreview(), this.history);
-        this.pack.confPack(factory.createCardDeck(), this.preview, factory.createCard(Card.Color.CLUBS, 1), this.history);
-        this.goal1.confTargetPack(factory.createTargetPack(Card.Color.SPADES), this.history);
-        this.goal2.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this.history);
-        this.goal3.confTargetPack(factory.createTargetPack(Card.Color.DIAMONDS), this.history);
-        this.goal4.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this.history);
-//        generateCards();
+        this.column1.confWorkingPack(factory.createWorkingPack(), this);
+        this.column2.confWorkingPack(factory.createWorkingPack(), this);
+        this.column3.confWorkingPack(factory.createWorkingPack(), this);
+        this.column4.confWorkingPack(factory.createWorkingPack(), this);
+        this.column5.confWorkingPack(factory.createWorkingPack(), this);
+        this.column6.confWorkingPack(factory.createWorkingPack(), this);
+        this.column7.confWorkingPack(factory.createWorkingPack(), this);
+        this.preview.confPreview(factory.createPreview(), this);
+        this.pack.confPack(factory.createCardDeck(), this.preview, factory.createCard(Card.Color.CLUBS, 1), this);
+        this.goal1.confTargetPack(factory.createTargetPack(Card.Color.SPADES), this);
+        this.goal2.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this);
+        this.goal3.confTargetPack(factory.createTargetPack(Card.Color.DIAMONDS), this);
+        this.goal4.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this);
+        generateCards();
     }
 
     public void generateCards() {
@@ -202,25 +170,25 @@ public class GameController extends AnchorPane {
         this.main = main;
         ArrayList<CardStack> columns = (ArrayList<CardStack>) data.get("columns");
         ArrayList<CardDeck> goals = (ArrayList<CardDeck>) data.get("goals");
-        this.column1.confWorkingPack(columns.get(0), this.history);
-        this.column2.confWorkingPack(columns.get(1), this.history);
-        this.column3.confWorkingPack(columns.get(2), this.history);
-        this.column4.confWorkingPack(columns.get(3), this.history);
-        this.column5.confWorkingPack(columns.get(4), this.history);
-        this.column6.confWorkingPack(columns.get(5), this.history);
-        this.column7.confWorkingPack(columns.get(6), this.history);
-        this.preview.confPreview((CardDeck) data.get("preview"), this.history);
+        this.column1.confWorkingPack(columns.get(0), this);
+        this.column2.confWorkingPack(columns.get(1), this);
+        this.column3.confWorkingPack(columns.get(2), this);
+        this.column4.confWorkingPack(columns.get(3), this);
+        this.column5.confWorkingPack(columns.get(4), this);
+        this.column6.confWorkingPack(columns.get(5), this);
+        this.column7.confWorkingPack(columns.get(6), this);
+        this.preview.confPreview((CardDeck) data.get("preview"), this);
         CardDeck deck = (CardDeck) data.get("pack");
         Card backCard = factory.createCard(Card.Color.CLUBS, 1);
         PreviewController prev = this.preview;
-        this.pack.confPack(deck, prev, backCard, this.history);
-        this.goal1.confTargetPack(goals.get(0), this.history);
-        this.goal2.confTargetPack(goals.get(1), this.history);
-        this.goal3.confTargetPack(goals.get(2), this.history);
-        this.goal4.confTargetPack(goals.get(3), this.history);
+        this.pack.confPack(deck, prev, backCard, this);
+        this.goal1.confTargetPack(goals.get(0), this);
+        this.goal2.confTargetPack(goals.get(1), this);
+        this.goal3.confTargetPack(goals.get(2), this);
+        this.goal4.confTargetPack(goals.get(3), this);
     }
 
-    private void updateView() {
+    public void updateView() {
         this.column1.updateView();
         this.column2.updateView();
         this.column3.updateView();
