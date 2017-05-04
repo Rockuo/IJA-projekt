@@ -99,7 +99,6 @@ public class GoalController extends AnchorPane  implements Controller {
 
     private void dragFrom(MouseEvent event) {
         if(this.targetPack.isEmpty()) return;
-        Logger.clean();
         Logger.setSrc(this.targetPack);
         ClipboardContent content = new ClipboardContent();
         content.putString("");
@@ -108,7 +107,7 @@ public class GoalController extends AnchorPane  implements Controller {
     }
 
     private void dragOver(DragEvent event) {
-        if (event.getGestureSource() != this && Logger.getCard() == null) {
+        if (event.getGestureSource() != this) {
             event.acceptTransferModes(TransferMode.MOVE);
         }
         event.consume();

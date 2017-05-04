@@ -33,10 +33,12 @@
 package gui.elements.card;
 
 import backend.History.History;
+import backend.History.Logger;
 import gui.elements.game.GameController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.image.*;
 
@@ -65,6 +67,7 @@ public class CardController extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        this.setOnDragDetected(this::dragFrom);
     }
 
     public void confCard(Card card, GameController game) {
@@ -94,5 +97,10 @@ public class CardController extends AnchorPane {
 
     public void setDefaultImage(String name) {
         this.defaultImage = name;
+    }
+
+    private void dragFrom(MouseEvent event) {
+        Logger.clean();
+        Logger.setCard(this.card);
     }
 }

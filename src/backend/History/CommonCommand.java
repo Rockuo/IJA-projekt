@@ -35,7 +35,7 @@ public class CommonCommand implements Command {
     }
 
     public boolean exec() {
-        if (card != null) {
+        if (src instanceof CardStack && dest instanceof CardStack) {
             CardStack stack = ((CardStack)src).pop(card);
             if(((CardStack)dest).put(stack)) {
                 return true;

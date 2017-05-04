@@ -41,6 +41,13 @@ public class MainController {
         this.gamePane.getChildren().add(fGame);
     }
 
+    public void initDone() {
+        this.stage.maxHeightProperty().setValue(530);
+        this.stage.maxWidthProperty().setValue(768);
+        this.stage.minHeightProperty().setValue(530);
+        this.stage.minWidthProperty().setValue(768);
+    }
+
     public void newTab(GameController game) {
         if (!expanded) {
             this.game4 = new GameFourController(this);

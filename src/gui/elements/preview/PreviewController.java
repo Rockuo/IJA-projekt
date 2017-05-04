@@ -115,7 +115,6 @@ public class PreviewController extends AnchorPane implements Controller {
 
     private void dragFrom(MouseEvent event) {
         if(this.preview.isEmpty()) return;
-        Logger.clean();
         Logger.setSrc(this.preview);
         ClipboardContent content = new ClipboardContent();
         content.putString("");
