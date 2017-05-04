@@ -14,6 +14,7 @@ import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
 import gui.klondike.Main;
 import gui.klondike.MainController;
+import gui.klondike.alert;
 import interfaces.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -107,9 +108,9 @@ public class GameController extends AnchorPane {
         this.preview.confPreview(factory.createPreview(), this);
         this.pack.confPack(factory.createCardDeck(), this.preview, factory.createCard(Card.Color.CLUBS, 1), this);
         this.goal1.confTargetPack(factory.createTargetPack(Card.Color.SPADES), this);
-        this.goal2.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this);
+        this.goal2.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this);
         this.goal3.confTargetPack(factory.createTargetPack(Card.Color.DIAMONDS), this);
-        this.goal4.confTargetPack(factory.createTargetPack(Card.Color.HEARTS), this);
+        this.goal4.confTargetPack(factory.createTargetPack(Card.Color.CLUBS), this);
         generateCards();
     }
 
@@ -220,10 +221,6 @@ public class GameController extends AnchorPane {
         this.main.saveGame(this);
     }
 
-    public void undoHandler(ActionEvent event) {
-        this.undo();
-    }
-
     public void newTabHandler(ActionEvent event) {
         this.main.newTab(this);
     }
@@ -232,15 +229,19 @@ public class GameController extends AnchorPane {
         this.main.exitGame(id);
     }
 
-    public void cardsHandler(ActionEvent event) {
+    public void undoHandler(ActionEvent event) {
+        this.undo();
+    }
+
+    public void hintHandler(ActionEvent event) {
 
     }
 
     public void helpHandler(ActionEvent event) {
-
+        alert.alertPopUp("About", "Pravidlá hry: \n\nCieľ hry: \n", "Cancel");
     }
 
     public void aboutHandler(ActionEvent event) {
-
+        alert.alertPopUp("About", "Tento program bol vytvorený študentmi xbures29 a xhalam14.", "Cancel");
     }
 }

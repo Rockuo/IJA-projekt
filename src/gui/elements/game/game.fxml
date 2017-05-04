@@ -21,18 +21,22 @@
                         <MenuItem mnemonicParsing="false" text="Create New Tab Game" onAction="#newTabHandler"/>
                         <MenuItem mnemonicParsing="false" text="Open Game" onAction="#openGameHandler"/>
                         <MenuItem mnemonicParsing="false" text="Save Game" onAction="#saveGameHandler"/>
-                        <MenuItem mnemonicParsing="false" text="Undo" onAction="#undoHandler"/>
                         <MenuItem mnemonicParsing="false" text="Exit" onAction="#exitHandler"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="View">
+                <Menu mnemonicParsing="false" text="Undo">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Cards" onAction="#cardsHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Undo" onAction="#undoHandler"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Hint">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Hint" onAction="#hintHandler"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="help" onAction="#helpHandler"/>
+                        <MenuItem mnemonicParsing="false" text="Help" onAction="#helpHandler"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="About">
