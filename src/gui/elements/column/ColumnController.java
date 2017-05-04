@@ -32,16 +32,15 @@
 
 package gui.elements.column;
 
-import backend.History.CommonCommand;
-import backend.History.History;
+import backend.History.DragAndDropCommand;
 import backend.History.Logger;
 import gui.elements.card.CardController;
 import gui.elements.game.GameController;
 import interfaces.Card;
 import interfaces.CardStack;
 import interfaces.Controller;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -49,13 +48,12 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  */
-public class ColumnController extends AnchorPane implements Controller{
+public class ColumnController extends AnchorPane implements Controller {
     private CardStack workingPack;
     private boolean big = true;
     private GameController game;
@@ -76,7 +74,7 @@ public class ColumnController extends AnchorPane implements Controller{
         this.cards = new ArrayList<>();
     }
 
-    public void confWorkingPack(CardStack workingPack, GameController game){
+    public void confWorkingPack(CardStack workingPack, GameController game) {
         this.workingPack = workingPack;
         this.game = game;
     }
@@ -89,7 +87,7 @@ public class ColumnController extends AnchorPane implements Controller{
         return this.workingPack;
     }
 
-    public void putForce(Card card){
+    public void putForce(Card card) {
         this.workingPack.putForce(card);
     }
 
@@ -103,13 +101,14 @@ public class ColumnController extends AnchorPane implements Controller{
         if (!this.workingPack.isEmpty()) {
             this.workingPack.get().turnFaceUp();
         }
-        for (int i=0; i<this.workingPack.size(); i++){
+        for (int i = 0; i < this.workingPack.size(); i++) {
             CardController cardController = new CardController();
             cardController.confCard(this.workingPack.get(i), this.game);
-            cardController.setLayoutY(15*i);
+            cardController.setLayoutY(15 * i);
             this.cards.add(cardController);
             this.getChildren().add(cardController);
         }
+        this.hideHint();
     }
 
     @Override
@@ -119,7 +118,7 @@ public class ColumnController extends AnchorPane implements Controller{
 
     private void dragFrom(MouseEvent event) {
         System.out.print(Logger.getCard());
-        if(this.workingPack.isEmpty()) return;
+        if (this.workingPack.isEmpty()) return;
         Logger.setSrc(this.workingPack);
         ClipboardContent content = new ClipboardContent();
         content.putString("");
@@ -128,7 +127,7 @@ public class ColumnController extends AnchorPane implements Controller{
     }
 
     private void dragOver(DragEvent event) {
-        if (event.getGestureSource() != this) {
+        if (event.getGestureSource() != this && this.game.getGameId() == Logger.getGameId()) {
             event.acceptTransferModes(TransferMode.MOVE);
         }
         event.consume();
@@ -136,11 +135,47 @@ public class ColumnController extends AnchorPane implements Controller{
 
     private void dragDropped(DragEvent event) {
         Logger.setDest(this.workingPack);
-        CommonCommand command = new CommonCommand();
-        if(command.exec()){
+        DragAndDropCommand command = new DragAndDropCommand();
+        if (command.exec()) {
             this.game.addToHistory(command);
             this.game.updateView();
         }
         event.consume();
+    }
+
+    public Card top() {
+        return this.workingPack.get();
+    }
+
+    public ArrayList<Card> getAllVisibleCards() {
+        ArrayList<Card> cards = new ArrayList<>();
+        for (int i = 0; i < this.workingPack.size(); i++) {
+            Card card = this.workingPack.get(i);
+            if (card.isTurnedFaceUp()) {
+                cards.add(card);
+            }
+        }
+        return cards;
+    }
+
+
+    public void showHint() {
+        if (this.getChildren().size() > 0)
+            this.getChildren().get(this.getChildren().size() - 1).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+    }
+
+    public void showHint(Card card) {
+        for (int i = this.cards.size()-1; i>=0; i--) {
+            this.cards.get(i).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+            if (this.cards.get(i).getCard().equals(card)) {
+                break;
+            }
+        }
+    }
+
+    public void hideHint() {
+        for (Node child : this.getChildren()) {
+            child.setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
+        }
     }
 }

@@ -32,15 +32,13 @@
 
 package gui.elements.pack;
 
-import backend.History.CommonCommand;
-import backend.History.History;
+import backend.History.DragAndDropCommand;
 import backend.History.PrevToPackCommand;
 import gui.elements.card.CardController;
 import gui.elements.game.GameController;
 import gui.elements.preview.PreviewController;
 import interfaces.Card;
 import interfaces.CardDeck;
-import interfaces.Command;
 import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,7 +99,7 @@ public class PackController extends AnchorPane implements Controller{
             Card card = this.cardDeck.pop();
             card.turnFaceUp();
             preview.addCard(card);
-            this.game.addToHistory(new CommonCommand(this.cardDeck, this.preview.getDeck(),null));
+            this.game.addToHistory(new DragAndDropCommand(this.cardDeck, this.preview.getDeck(),null));
         }
         this.updateView();
     }
@@ -117,10 +115,20 @@ public class PackController extends AnchorPane implements Controller{
         } else {
             this.cardFX.updateCard(this.backCard);
         }
+        this.hideHint();
     }
 
     @Override
     public void resize(boolean big) {
 
+    }
+
+    public void showHint(){
+        this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+    }
+
+
+    public void hideHint(){
+        this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
     }
 }

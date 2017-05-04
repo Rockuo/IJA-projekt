@@ -35,6 +35,7 @@ package gui.elements.preview;
 import backend.History.History;
 import backend.History.Logger;
 import gui.elements.card.CardController;
+import gui.elements.column.ColumnController;
 import gui.elements.game.GameController;
 import interfaces.CardDeck;
 import interfaces.Controller;
@@ -98,6 +99,7 @@ public class PreviewController extends AnchorPane implements Controller {
             cardFX.confCard(this.preview.get(), this.game);
             this.setOpacity(1);
         }
+        this.hideHint();
     }
 
     @Override
@@ -121,4 +123,18 @@ public class PreviewController extends AnchorPane implements Controller {
         this.startDragAndDrop(TransferMode.ANY).setContent(content);
         event.consume();
     }
+
+    public CardDeck getBackend(){
+        return this.preview;
+    }
+
+    public void showHint(){
+        ((CardController)this.getChildren().get(0)).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+    }
+
+
+    public void hideHint(){
+        this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
+    }
+
 }

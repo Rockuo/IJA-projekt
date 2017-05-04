@@ -46,4 +46,6 @@ public interface Card extends Serializable{
     boolean similarColorTo(Card c);
 
     int compareValue(Card c);
+
+    void revertTurn();
 }

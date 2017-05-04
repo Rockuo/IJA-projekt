@@ -101,6 +101,11 @@ public class CardController extends AnchorPane {
 
     private void dragFrom(MouseEvent event) {
         Logger.clean();
+        Logger.setGameId(this.game.getGameId());
         Logger.setCard(this.card);
+    }
+
+    public Card getCard(){
+        return this.card;
     }
 }

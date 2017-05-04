@@ -32,14 +32,17 @@
 
 package gui.elements.goal;
 
-import backend.History.CommonCommand;
+import backend.History.DragAndDropCommand;
 import backend.History.Logger;
 import gui.elements.game.GameController;
 import gui.elements.card.CardController;
+import interfaces.Card;
 import interfaces.CardDeck;
+import interfaces.CardStack;
 import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
@@ -47,7 +50,6 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.io.Serializable;
 
 /**
  * Sample custom control hosting a text field and a button.
@@ -90,6 +92,7 @@ public class GoalController extends AnchorPane  implements Controller {
             this.setOpacity(1);
         }
         this.cardImage.confCard(this.targetPack.get(), this.game);
+        this.hideHint();
     }
 
     @Override
@@ -107,7 +110,7 @@ public class GoalController extends AnchorPane  implements Controller {
     }
 
     private void dragOver(DragEvent event) {
-        if (event.getGestureSource() != this) {
+        if (event.getGestureSource() != this && this.game.getGameId() == Logger.getGameId()) {
             event.acceptTransferModes(TransferMode.MOVE);
         }
         event.consume();
@@ -115,11 +118,24 @@ public class GoalController extends AnchorPane  implements Controller {
 
     private void dragDropped(DragEvent event) {
         Logger.setDest(this.targetPack);
-        CommonCommand command = new CommonCommand();
+        DragAndDropCommand command = new DragAndDropCommand();
         if(command.exec()){
             this.game.addToHistory(command);
             this.game.updateView();
         }
         event.consume();
+    }
+
+    public CardDeck getBackend() {
+        return this.targetPack;
+    }
+
+    public void showHint(){
+        this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+    }
+
+
+    public void hideHint(){
+        this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
     }
 }

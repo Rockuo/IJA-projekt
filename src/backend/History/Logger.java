@@ -11,12 +11,14 @@ public class Logger {
     private static CardDeck dest;
     private static Card card;
     private static boolean done;
+    private static int gameId;
 
     public static void clean(){
         src = null;
         dest = null;
         card = null;
         done = false;
+        gameId = -1;
     }
     public static boolean isDone() {
         return done;
@@ -48,5 +50,13 @@ public class Logger {
 
     public static void setCard(Card card) {
         Logger.card = card;
+    }
+
+    public static int getGameId() {
+        return gameId;
+    }
+
+    public static void setGameId(int gameId) {
+        Logger.gameId = gameId;
     }
 }

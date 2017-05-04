@@ -8,18 +8,19 @@ import interfaces.Command;
 /**
  * Created by rockuo on 3.5.17.
  */
-public class CommonCommand implements Command {
+public class DragAndDropCommand implements Command {
     private CardDeck src;
     private CardDeck dest;
     private Card card;
+    private boolean revertTurn = false;
 
-    public CommonCommand() {
+    public DragAndDropCommand() {
         this.card = Logger.getCard();
         this.src = Logger.getSrc();
         this.dest = Logger.getDest();
     }
 
-    public CommonCommand(CardDeck src, CardDeck dest, Card card) {
+    public DragAndDropCommand(CardDeck src, CardDeck dest, Card card) {
         this.card = card;
         this.src = src;
         this.dest = dest;
@@ -27,7 +28,12 @@ public class CommonCommand implements Command {
 
     @Override
     public void undo() {
-        if (card != null) {
+        if (this.revertTurn) {
+            Card card = src.pop();
+            card.revertTurn();
+            src.putForce(card);
+        }
+        if (src instanceof CardStack && dest instanceof CardStack) {
             ((CardStack)src).putForce(((CardStack)dest).pop(card));
         } else {
             src.putForce(dest.pop());
@@ -35,20 +41,35 @@ public class CommonCommand implements Command {
     }
 
     public boolean exec() {
+        boolean succes = false;
         if (src instanceof CardStack && dest instanceof CardStack) {
             CardStack stack = ((CardStack)src).pop(card);
             if(((CardStack)dest).put(stack)) {
-                return true;
+                succes = true;
+            } else {
+                ((CardStack) src).putForce(stack);
             }
-            ((CardStack)src).putForce(stack);
         } else {
             Card card = src.pop();
             if(dest.put(card)) {
-                return true;
+                succes = true;
+            } else {
+                src.putForce(card);
             }
+        }
+        if(succes) {
+            Card card = src.pop();
+            this.revertTurn = !card.isTurnedFaceUp();
             src.putForce(card);
+        }
+        return succes;
+    }
+
+    public boolean executable() {
+        if(this.exec()) {
+            this.undo();
+            return true;
         }
         return false;
     }
-
 }

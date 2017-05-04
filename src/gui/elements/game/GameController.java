@@ -6,26 +6,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import abstractFactories.AbstractFactorySolitaire;
+import backend.hinter.Hinter;
 import backend.History.History;
-import factories.FactoryKlondike;
 import gui.elements.column.ColumnController;
 import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
-import gui.klondike.Main;
 import gui.klondike.MainController;
 import gui.klondike.alert;
 import interfaces.*;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
-
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 /**
  *
@@ -60,6 +54,8 @@ public class GameController extends AnchorPane {
     private GoalController goal4;
     @FXML
     private MenuItem switcher;
+
+    private Hinter hinter;
 
     private History history;
     private int id = 0;
@@ -163,6 +159,8 @@ public class GameController extends AnchorPane {
         saved.put("goals", goals);
         saved.put("preview", preview.save());
         saved.put("pack", pack.save());
+        saved.put("history", this.history);
+
         return saved;
     }
 
@@ -187,6 +185,8 @@ public class GameController extends AnchorPane {
         this.goal2.confTargetPack(goals.get(1), this);
         this.goal3.confTargetPack(goals.get(2), this);
         this.goal4.confTargetPack(goals.get(3), this);
+        this.history = (History) data.get("history");
+        this.updateView();
     }
 
     public void updateView() {
@@ -234,7 +234,25 @@ public class GameController extends AnchorPane {
     }
 
     public void hintHandler(ActionEvent event) {
+        if(this.hinter == null) createHinter();
+        hinter.hint();
+    }
 
+    private void createHinter() {
+        this.hinter = new Hinter();
+        this.hinter.addColumns(this.column1);
+        this.hinter.addColumns(this.column2);
+        this.hinter.addColumns(this.column3);
+        this.hinter.addColumns(this.column4);
+        this.hinter.addColumns(this.column5);
+        this.hinter.addColumns(this.column6);
+        this.hinter.addColumns(this.column7);
+        this.hinter.addGoals(this.goal1);
+        this.hinter.addGoals(this.goal2);
+        this.hinter.addGoals(this.goal3);
+        this.hinter.addGoals(this.goal4);
+        this.hinter.setPack(this.pack);
+        this.hinter.setPreview(this.preview);
     }
 
     public void helpHandler(ActionEvent event) {
@@ -243,5 +261,9 @@ public class GameController extends AnchorPane {
 
     public void aboutHandler(ActionEvent event) {
         alert.alertPopUp("About", "Tento program bol vytvorený študentmi xbures29 a xhalam14.", "Cancel");
+    }
+
+    public int getGameId() {
+        return this.id;
     }
 }
