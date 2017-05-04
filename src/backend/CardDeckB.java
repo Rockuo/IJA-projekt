@@ -108,4 +108,9 @@ public class CardDeckB implements CardDeck {
     public void putForce(Card card) {
         this.stack.push(card);
     }
+
+    @Override
+    public Card.Color getColor() {
+        return color;
+    }
 }

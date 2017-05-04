@@ -17,4 +17,6 @@ public interface CardDeck extends Serializable {
     int size();
 
     void putForce(Card card);
+
+    Card.Color getColor();
 }

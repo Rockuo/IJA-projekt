@@ -56,7 +56,7 @@ public class CardController extends AnchorPane {
     private ImageView cardImage;
     private Card card = null;
     private GameController game;
-    private String defaultImage = "goal";
+    private String defaultImage = "S";
 
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("card.fxml"));

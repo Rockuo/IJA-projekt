@@ -76,7 +76,7 @@ public class GoalController extends AnchorPane  implements Controller {
     public void confTargetPack(CardDeck target, GameController game){
         this.targetPack = target;
         this.game = game;
-        this.setOpacity(0.2);
+        cardImage.setDefaultImage(targetPack.getColor().toString());
         this.updateView();
     }
 
