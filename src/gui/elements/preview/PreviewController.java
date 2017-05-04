@@ -33,10 +33,13 @@
 package gui.elements.preview;
 
 import backend.History.History;
+import backend.History.Logger;
 import gui.elements.card.CardController;
 import interfaces.CardDeck;
+import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 
 import interfaces.Card;
@@ -48,7 +51,7 @@ import java.util.ArrayList;
 /**
  * Sample custom control hosting a text field and a button.
  */
-public class PreviewController extends AnchorPane implements Serializable {
+public class PreviewController extends AnchorPane implements Controller {
 
     private CardDeck preview;
     @FXML
@@ -64,6 +67,7 @@ public class PreviewController extends AnchorPane implements Serializable {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        this.setOnDragDetected(this::dragFrom);
     }
 
     public void confPreview(CardDeck preview, History history) {
@@ -93,11 +97,27 @@ public class PreviewController extends AnchorPane implements Serializable {
         }
     }
 
+    @Override
+    public void resize(boolean big) {
+
+    }
+
     public CardDeck getDeck() {
         return this.preview;
     }
 
     public CardDeck save() {
         return this.preview;
+    }
+
+    private void dragFrom(MouseEvent event) {
+        System.out.print("game From");
+        if(this.preview.isEmpty()) return;
+        Logger.clean();
+        Logger.setSrc(this.preview);
+        ClipboardContent content = new ClipboardContent();
+        content.putString("");
+        this.startDragAndDrop(TransferMode.ANY).setContent(content);
+        event.consume();
     }
 }
