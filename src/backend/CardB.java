@@ -4,6 +4,9 @@ import interfaces.Card;
 
 import java.util.*;
 
+/**
+ *
+ */
 public class CardB implements Card {
 
     private int value;
