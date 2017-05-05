@@ -8,7 +8,7 @@ import interfaces.CardStack;
 /**
  * Abstraktní třída pro generování backendu
  *
- * @author xbures29&xhalam14
+ * @author xbures29+xhalam14
  */
 public abstract class AbstractFactorySolitaire {
     /**
