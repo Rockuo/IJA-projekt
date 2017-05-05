@@ -115,10 +115,6 @@ public class PackController extends AnchorPane implements Controller{
         this.hideHint();
     }
 
-    @Override
-    public void resize(boolean big) {
-
-    }
 
     public void showHint(){
         this.getChildren().get(0).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #25ff20;");

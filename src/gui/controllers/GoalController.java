@@ -48,15 +48,21 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+
 /**
- * Sample custom control hosting a text field and a button.
+ * Třída ovládající Cílový balíček
+ *
+ * @author xbures29+xhalam14
  */
-public class GoalController extends AnchorPane  implements Controller {
+public class GoalController extends AnchorPane implements Controller {
     private CardDeck targetPack;
     private GameController game;
     @FXML
     private CardController cardImage;
 
+    /**
+     * Vykreslí balíček a nastaví event handlery
+     */
     public GoalController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/goal.fxml"));
         fxmlLoader.setController(this);
@@ -72,7 +78,7 @@ public class GoalController extends AnchorPane  implements Controller {
         this.setOnDragDropped(this::dragDropped);
     }
 
-    public void confTargetPack(CardDeck target, GameController game){
+    void confTargetPack(CardDeck target, GameController game) {
         this.setOpacity(1);
         this.targetPack = target;
         this.game = game;
@@ -80,26 +86,22 @@ public class GoalController extends AnchorPane  implements Controller {
         this.updateView();
     }
 
+    @Override
     public CardDeck save() {
         return this.targetPack;
     }
 
     @Override
     public void updateView() {
-        if (!this.targetPack.isEmpty()){
+        if (!this.targetPack.isEmpty()) {
             this.setOpacity(1);
         }
         this.cardImage.confCard(this.targetPack.get(), this.game);
         this.hideHint();
     }
 
-    @Override
-    public void resize(boolean big) {
-
-    }
-
     private void dragFrom(MouseEvent event) {
-        if(this.targetPack.isEmpty()) return;
+        if (this.targetPack.isEmpty()) return;
         Logger.setSrc(this.targetPack);
         ClipboardContent content = new ClipboardContent();
         content.putString("");
@@ -117,7 +119,7 @@ public class GoalController extends AnchorPane  implements Controller {
     private void dragDropped(DragEvent event) {
         Logger.setDest(this.targetPack);
         DragAndDropCommand command = new DragAndDropCommand();
-        if(command.exec()){
+        if (command.exec()) {
             this.game.addToHistory(command);
             this.game.updateView();
         }
@@ -125,16 +127,23 @@ public class GoalController extends AnchorPane  implements Controller {
         this.game.winGame();
     }
 
+    /**
+     * Získej Backend Cíle
+     *
+     * @return Backend Cíle
+     */
     public CardDeck getBackend() {
         return this.targetPack;
     }
 
-    public void showHint(){
+    /**
+     * Zobraz nápovědu
+     */
+    public void showHint() {
         this.getChildren().get(0).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #25ff20;");
     }
 
-
-    public void hideHint(){
+    private void hideHint() {
         this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
     }
 }

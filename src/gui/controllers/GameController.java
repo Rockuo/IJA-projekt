@@ -17,9 +17,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 
 /**
+ * Třída ovládající hru
  *
+ * @author xbures29+xhalam14
  */
-public class GameController extends AnchorPane {
+public class GameController extends AnchorPane implements Controller{
 
     @FXML
     private ColumnController column1;
@@ -55,14 +57,16 @@ public class GameController extends AnchorPane {
     private History history;
     private int id = 0;
 
-    public void setDefaultValues(MainController main, int id) {
+    void setDefaultValues(MainController main, int id) {
         this.main = main;
         this.id = id;
     }
     private boolean confd = false;
     private MainController main;
 
-
+    /**
+     * Vykreslí hru a nastavé event handlery
+     */
     public GameController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/game.fxml"));
         fxmlLoader.setRoot(this);
@@ -76,16 +80,11 @@ public class GameController extends AnchorPane {
         this.history = new History();
     }
 
-    public void undo() {
-        this.history.undo();
-        this.updateView();
-    }
-
-    public boolean isConfd() {
+    boolean isConfd() {
         return confd;
     }
 
-    public void configure(AbstractFactorySolitaire factory, int id, MainController main) {
+    void configure(AbstractFactorySolitaire factory, int id, MainController main) {
         this.confd = true;
         this.id = id;
         this.main = main;
@@ -105,7 +104,7 @@ public class GameController extends AnchorPane {
         generateCards();
     }
 
-    public void generateCards() {
+    private void generateCards() {
         for (int i=1; i<8; i++){
             for (int j=1; j<=i; j++){
                 switch (i){
@@ -135,6 +134,7 @@ public class GameController extends AnchorPane {
         this.column7.updateView();
     }
 
+    @Override
     public HashMap<String, Object> save() {
         HashMap<String, Object> saved = new HashMap<>();
         ArrayList<CardStack> columns = new ArrayList<>();
@@ -159,7 +159,7 @@ public class GameController extends AnchorPane {
         return saved;
     }
 
-    public void open(HashMap<String, Object> data, AbstractFactorySolitaire factory, int id, MainController main) {
+    void open(HashMap<String, Object> data, AbstractFactorySolitaire factory, int id, MainController main) {
         this.id = id;
         this.main = main;
         ArrayList<CardStack> columns = (ArrayList<CardStack>) data.get("columns");
@@ -184,6 +184,7 @@ public class GameController extends AnchorPane {
         this.updateView();
     }
 
+    @Override
     public void updateView() {
         this.column1.updateView();
         this.column2.updateView();
@@ -200,7 +201,7 @@ public class GameController extends AnchorPane {
         this.goal4.updateView();
     }
 
-    public void addToHistory(Command command) {
+    void addToHistory(Command command) {
         this.history.add(command);
     }
 
@@ -225,7 +226,8 @@ public class GameController extends AnchorPane {
     }
 
     public void undoHandler(ActionEvent event) {
-        this.undo();
+        this.history.undo();
+        this.updateView();
     }
 
     public void hintHandler(ActionEvent event) {
@@ -258,14 +260,14 @@ public class GameController extends AnchorPane {
         AlertManager.alertPopUp("About", "Tento program bol vytvorený študentmi xbures29 a xhalam14.");
     }
 
-    public void winGame(){
+    void winGame(){
         if ((this.goal1.getBackend().size() == 13) && (this.goal2.getBackend().size() == 13)
                 && (this.goal3.getBackend().size() == 13) && (this.goal4.getBackend().size() == 13)){
             AlertManager.alertPopUpNew("Congratulatios!", "Gratulujeme k výhre.\n\tChete si zahrať novú hru?", "New Game", this);
         }
     }
 
-    public int getGameId() {
+    int getGameId() {
         return this.id;
     }
 }

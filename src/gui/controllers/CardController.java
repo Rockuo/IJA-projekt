@@ -33,6 +33,7 @@
 package gui.controllers;
 
 import backend.History.Logger;
+import interfaces.Controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -45,7 +46,9 @@ import interfaces.Card;
 import java.io.IOException;
 
 /**
- * Sample custom control hosting a text field and a button.
+ * Controller ovládající Zobrazování Karty a práce nad kartou jako takovou skrz GUI
+ *
+ * @author xbures29+xhalam14
  */
 public class CardController extends AnchorPane {
 
@@ -55,6 +58,9 @@ public class CardController extends AnchorPane {
     private GameController game;
     private String defaultImage = "S";
 
+    /**
+     * Během vytváření instance elementu vykreslí kartu a nastaví event handlery
+     */
     public CardController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/card.fxml"));
         fxmlLoader.setController(this);
@@ -67,17 +73,29 @@ public class CardController extends AnchorPane {
         this.setOnDragDetected(this::dragFrom);
     }
 
-    public void confCard(Card card, GameController game) {
+    /**
+     * Inicializační nastavení karty
+     * @param card Karta pro zobrazení
+     * @param game Hra ve které se karta vyskytuje
+     */
+    void confCard(Card card, GameController game) {
         this.card = card;
         this.game = game;
         this.updateView();
     }
 
-    public void updateCard(Card card) {
+    /**
+     * Změňí zobrazovanou kartu
+     * @param card Karta
+     */
+    void updateCard(Card card) {
         this.card = card;
         this.updateView();
     }
 
+    /**
+     * Obnoví zobrazení karty
+     */
     public void updateView() {
         String imagePath;
         if (card != null) {
@@ -92,7 +110,8 @@ public class CardController extends AnchorPane {
         cardImage.setImage(new Image(imagePath));
     }
 
-    public void setDefaultImage(String name) {
+
+    void setDefaultImage(String name) {
         this.defaultImage = name;
     }
 
@@ -102,6 +121,10 @@ public class CardController extends AnchorPane {
         Logger.setCard(this.card);
     }
 
+    /**
+     * Získej kartu
+     * @return Karta
+     */
     public Card getCard(){
         return this.card;
     }

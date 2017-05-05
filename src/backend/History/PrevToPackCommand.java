@@ -4,7 +4,9 @@ import interfaces.CardDeck;
 import interfaces.Command;
 
 /**
- * Created by rockuo on 3.5.17..nvg
+ * Příkaz pro přenos celého balíčku z Preview na Pack
+ *
+ * @author xbures29+xhalam14
  */
 public class PrevToPackCommand implements Command {
     private CardDeck prev;
@@ -24,7 +26,6 @@ public class PrevToPackCommand implements Command {
 
     @Override
     public boolean exec() {
-        //todo
-        return true;
+        return false;
     }
 }

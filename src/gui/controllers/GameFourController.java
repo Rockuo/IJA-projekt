@@ -13,7 +13,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Sample custom control hosting a text field and a button.
+ * Třída zobrazující a nastavující čtveřici her
+ *
+ * @author xbures29+xhalam14
  */
 public class GameFourController extends AnchorPane implements Initializable{
 
@@ -35,7 +37,11 @@ public class GameFourController extends AnchorPane implements Initializable{
     private AnchorPane gameWrap4;
     private MainController main;
 
-    public GameFourController(MainController main) {
+    /**
+     * Zobraz 4 hry
+     * @param main Kam budou zobrazeny
+     */
+    GameFourController(MainController main) {
         this.main = main;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/gameFour.fxml"));
         fxmlLoader.setController(this);
@@ -47,7 +53,7 @@ public class GameFourController extends AnchorPane implements Initializable{
         }
     }
 
-    public void configGame(AbstractFactorySolitaire factoryKlondike, int id) {
+    void configGame(AbstractFactorySolitaire factoryKlondike, int id) {
         switch (id) {
             case 1:
                 this.game1.configure(factoryKlondike, id, main);
@@ -67,7 +73,7 @@ public class GameFourController extends AnchorPane implements Initializable{
         }
     }
 
-    public void setGame(int id, GameController game) {
+    void setGame(int id, GameController game) {
         AnchorPane wrap;
         switch (id) {
             case 1:
@@ -95,7 +101,7 @@ public class GameFourController extends AnchorPane implements Initializable{
         wrap.getChildren().add(game);
     }
 
-    public boolean isConfd(int id) {
+    boolean isConfd(int id) {
         switch (id) {
             case 1:
                 return this.game1.isConfd();

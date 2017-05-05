@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by rockuo on 3.5.17.
+ * Historie
+ *
+ * @author xbures29+xhalam14
  */
 public class History implements Serializable{
     private ArrayList<Command> history;
@@ -15,6 +17,10 @@ public class History implements Serializable{
         this.history = new ArrayList<>();
     }
 
+    /**
+     * Přidat příkaz Do historie
+     * @param command příkaz
+     */
     public void add(Command command) {
         history.add(command);
         if(history.size() > 5) {
@@ -22,6 +28,9 @@ public class History implements Serializable{
         }
     }
 
+    /**
+     * Zpět o jeden krok
+     */
     public void undo() {
         if(this.history.size()>0) (this.history.remove(this.history.size()-1)).undo();
     }

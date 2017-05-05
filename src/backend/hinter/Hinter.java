@@ -10,7 +10,9 @@ import interfaces.Card;
 import java.util.ArrayList;
 
 /**
- * Created by rockuo on 4.5.17.
+ * Abstraktní třída pro generování backendu
+ *
+ * @author xbures29+xhalam14
  */
 public class Hinter {
     ArrayList<ColumnController> columns;
@@ -23,22 +25,41 @@ public class Hinter {
         this.goals = new ArrayList<>();
     }
 
+    /**
+     * Přidat ColumnController
+     * @param column Controller Sloupce
+     */
     public void addColumns(ColumnController column) {
         this.columns.add(column);
     }
 
+    /**
+     * Přidat GoalController
+     * @param goal Cílový balíček
+     */
     public void addGoals(GoalController goal) {
         this.goals.add(goal);
     }
 
+    /**
+     * Nastavit Preview
+     * @param preview "odhazovací" balíček
+     */
     public void setPreview(PreviewController preview) {
         this.preview = preview;
     }
 
+    /**
+     *  Nastavit Pack
+     *  @param pack lízací balíček
+     */
     public void setPack(PackController pack) {
         this.pack = pack;
     }
 
+    /**
+     * Provést nápovědu
+     */
     public void hint() {
         if (this.onGoal()) return;
         if (this.onPack()) return;

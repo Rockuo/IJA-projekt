@@ -6,7 +6,9 @@ import interfaces.CardStack;
 import interfaces.Command;
 
 /**
- * Created by rockuo on 3.5.17.
+ * Příkaz pro všechny drag and drop akce
+ *
+ * @author xbures29+xhalam14
  */
 public class DragAndDropCommand implements Command {
     private CardDeck src;
@@ -14,6 +16,9 @@ public class DragAndDropCommand implements Command {
     private Card card;
     private boolean revertTurn = false;
 
+    /**
+     * Získá nastavení z Loggeru
+     */
     public DragAndDropCommand() {
         this.card = Logger.getCard();
         this.src = Logger.getSrc();
@@ -39,7 +44,7 @@ public class DragAndDropCommand implements Command {
             src.putForce(dest.pop());
         }
     }
-
+    @Override
     public boolean exec() {
         boolean succes = false;
         if (src instanceof CardStack && dest instanceof CardStack) {
