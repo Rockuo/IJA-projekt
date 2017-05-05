@@ -158,12 +158,12 @@ public class ColumnController extends AnchorPane implements Controller {
 
     public void showHint() {
         if (this.getChildren().size() > 0)
-            this.getChildren().get(this.getChildren().size() - 1).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+            this.getChildren().get(this.getChildren().size() - 1).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #07ff1a;");
     }
 
     public void showHint(Card card) {
         for (int i = this.cards.size()-1; i>=0; i--) {
-            this.cards.get(i).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+            this.cards.get(i).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #25ff20;");
             if (this.cards.get(i).getCard().equals(card)) {
                 break;
             }

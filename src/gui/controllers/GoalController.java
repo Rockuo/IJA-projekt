@@ -130,7 +130,7 @@ public class GoalController extends AnchorPane  implements Controller {
     }
 
     public void showHint(){
-        this.getChildren().get(0).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+        this.getChildren().get(0).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #25ff20;");
     }
 
 

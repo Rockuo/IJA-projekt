@@ -44,8 +44,6 @@ public class AlertManager {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == buttonTypeNewGame){
             gameController.newGameHandler(null);
-        } else {
-            alert.showAndWait();
         }
     }
 }

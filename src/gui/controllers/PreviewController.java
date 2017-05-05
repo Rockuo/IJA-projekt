@@ -126,7 +126,7 @@ public class PreviewController extends AnchorPane implements Controller {
     }
 
     public void showHint(){
-        ((CardController)this.getChildren().get(0)).setStyle("-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: aliceblue;");
+        ((CardController)this.getChildren().get(0)).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #25ff20;");
     }
 
 
