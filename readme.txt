@@ -1,7 +1,24 @@
-Vysoké učení technické v Brně
-Fakulta informačních technológií
-IJA - Seminář Java
-Projekt
+************************************************************************
+Projekt do IJA - Seminář Java
+************************************************************************
 
-Názov projektu: Klondike (Solitaire)
-členové týmu: Richard Bureš (xbures29), Mária Halamová (xhalam14)
+************************************************************************
+Názov: 	Pasians (Solitaire) Klondike
+************************************************************************
+
+************************************************************************
+Členové týmu: 	Richard Bureš (xbures29)
+				Mária Halamová (xhalam14)
+************************************************************************
+
+************************************************************************
+Popis hry:
+			Karetní hra Klondike (Solitaire).
+************************************************************************
+
+************************************************************************
+Pravidlá hry:
+				Hra se hrá se standardním balíčkem obsahujícím 52 karet.
+			Cílem hry je uložit všechny katry do cílových políček
+			podle barvy a od nejmenší karty (A) po nejvěčší kartu (K).
+************************************************************************

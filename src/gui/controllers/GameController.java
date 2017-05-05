@@ -253,11 +253,14 @@ public class GameController extends AnchorPane implements Controller{
     }
 
     public void helpHandler(ActionEvent event) {
-        AlertManager.alertPopUp("About", "Pravidlá hry: \n\nCieľ hry: \n");
+        AlertManager.alertPopUp("About", "Pravidlá hry: \n\tHra se hrá se standardním balíčkem obsahujícím 52 karet.\n" +
+                "Cílem hry je uložit všechny katry do cílových políček\n" +
+                "podle barvy a od nejmenší karty (A) po nejvěčší kartu (K). \n");
     }
 
     public void aboutHandler(ActionEvent event) {
-        AlertManager.alertPopUp("About", "Tento program bol vytvorený študentmi xbures29 a xhalam14.");
+        AlertManager.alertPopUp("About", "Projekt do IJA - Seminář Java\n\nNázov: \tPasians (Solitaire) Klondike\n\nČlenové týmu: \tRichard Bureš (xbures29)\n" +
+                "\t\t\tMária Halamová (xhalam14)");
     }
 
     void winGame(){
