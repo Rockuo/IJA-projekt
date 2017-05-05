@@ -12,7 +12,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("./views/klondike.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("views/klondike.fxml"));
         Parent root = fxmlLoader.load();
         ((MainController) fxmlLoader.getController()).setStage(primaryStage);
         primaryStage.setTitle("Solitaire");

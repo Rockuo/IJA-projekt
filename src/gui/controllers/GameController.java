@@ -64,7 +64,7 @@ public class GameController extends AnchorPane {
 
 
     public GameController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/game.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/game.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

@@ -59,7 +59,7 @@ public class PackController extends AnchorPane implements Controller{
     private GameController game;
 
     public PackController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/pack.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/pack.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {

@@ -58,7 +58,7 @@ public class PreviewController extends AnchorPane implements Controller {
     private GameController game;
 
     public PreviewController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/preview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/preview.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {

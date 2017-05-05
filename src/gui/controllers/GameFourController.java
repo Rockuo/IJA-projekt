@@ -37,7 +37,7 @@ public class GameFourController extends AnchorPane implements Initializable{
 
     public GameFourController(MainController main) {
         this.main = main;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/gameFour.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/gameFour.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {

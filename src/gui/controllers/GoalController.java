@@ -58,7 +58,7 @@ public class GoalController extends AnchorPane  implements Controller {
     private CardController cardImage;
 
     public GoalController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/goal.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/goal.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {

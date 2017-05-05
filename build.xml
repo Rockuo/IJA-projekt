@@ -42,7 +42,9 @@
         <mkdir dir="${build.classes.dir}"/>
         <mkdir dir="${build.jar.dir}"/>
         <mkdir dir="${doc.dir}"/>
-        <unzip src="${lib.dir}/images.zip" dest="${build.classes.dir}/images"/>
+        <unzip src="${lib.dir}/images.zip" dest="${build.classes.dir}/"/>
+        <copydir src="${src.dir}/gui/views" dest="${build.classes.dir}/gui/views"/>
+        <!--<copyfile src="${src.dir}/gui/klondike.fxml" dest=""-->
         <!--<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">-->
             <!--<classpath refid="libs.classpath"/>-->
         <!--</javac>-->

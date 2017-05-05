@@ -58,7 +58,7 @@ public class ColumnController extends AnchorPane implements Controller {
     private ArrayList<CardController> cards;
 
     public ColumnController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../views/column.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/column.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(this);
         try {
