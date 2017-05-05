@@ -13,7 +13,7 @@ import gui.elements.goal.GoalController;
 import gui.elements.pack.PackController;
 import gui.elements.preview.PreviewController;
 import gui.klondike.MainController;
-import gui.klondike.alert;
+import gui.klondike.AlertManager;
 import interfaces.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -256,11 +256,18 @@ public class GameController extends AnchorPane {
     }
 
     public void helpHandler(ActionEvent event) {
-        alert.alertPopUp("About", "Pravidlá hry: \n\nCieľ hry: \n", "Cancel");
+        AlertManager.alertPopUp("About", "Pravidlá hry: \n\nCieľ hry: \n");
     }
 
     public void aboutHandler(ActionEvent event) {
-        alert.alertPopUp("About", "Tento program bol vytvorený študentmi xbures29 a xhalam14.", "Cancel");
+        AlertManager.alertPopUp("About", "Tento program bol vytvorený študentmi xbures29 a xhalam14.");
+    }
+
+    public void winGame(){
+        if ((this.goal1.getBackend().size() == 13) && (this.goal2.getBackend().size() == 13)
+                && (this.goal3.getBackend().size() == 13) && (this.goal4.getBackend().size() == 13)){
+            AlertManager.alertPopUpNew("Congratulatios!", "Gratulujeme k výhre.\n\tChete si zahrať novú hru?", "New Game", this);
+        }
     }
 
     public int getGameId() {
