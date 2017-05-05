@@ -162,6 +162,7 @@ public class GameController extends AnchorPane implements Controller{
     void open(HashMap<String, Object> data, AbstractFactorySolitaire factory, int id, MainController main) {
         this.id = id;
         this.main = main;
+        this.confd = true;
         ArrayList<CardStack> columns = (ArrayList<CardStack>) data.get("columns");
         ArrayList<CardDeck> goals = (ArrayList<CardDeck>) data.get("goals");
         this.column1.confWorkingPack(columns.get(0), this);
