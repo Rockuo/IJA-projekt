@@ -10,6 +10,7 @@ cp ./build.xml ./xbures29/
 cp ./readme.txt ./xbures29/
 cp -r ./examples ./xbures29/
 cp -r ./src ./xbures29/
+rm -r ./xbures29/src/images
 zip -r xbures29.zip  ./xbures29
 rm -r ./xbures29
 rm -r ./testFolder
