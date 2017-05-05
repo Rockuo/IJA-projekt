@@ -34,7 +34,7 @@ public class DragAndDropCommand implements Command {
             src.putForce(card);
         }
         if (src instanceof CardStack && dest instanceof CardStack) {
-            ((CardStack)src).putForce(((CardStack)dest).pop(card));
+            ((CardStack) src).putForce(((CardStack) dest).pop(card));
         } else {
             src.putForce(dest.pop());
         }
@@ -43,30 +43,32 @@ public class DragAndDropCommand implements Command {
     public boolean exec() {
         boolean succes = false;
         if (src instanceof CardStack && dest instanceof CardStack) {
-            CardStack stack = ((CardStack)src).pop(card);
-            if(((CardStack)dest).put(stack)) {
+            CardStack stack = ((CardStack) src).pop(card);
+            if (((CardStack) dest).put(stack)) {
                 succes = true;
             } else {
                 ((CardStack) src).putForce(stack);
             }
         } else {
             Card card = src.pop();
-            if(dest.put(card)) {
+            if (dest.put(card)) {
                 succes = true;
             } else {
                 src.putForce(card);
             }
         }
-        if(succes) {
+        if (succes) {
             Card card = src.pop();
-            this.revertTurn = !card.isTurnedFaceUp();
-            src.putForce(card);
+            if (card != null) {
+                this.revertTurn = !card.isTurnedFaceUp();
+                src.putForce(card);
+            }
         }
         return succes;
     }
 
     public boolean executable() {
-        if(this.exec()) {
+        if (this.exec()) {
             this.undo();
             return true;
         }
