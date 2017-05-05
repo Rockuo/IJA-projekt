@@ -1,14 +1,13 @@
 package backend.hinter;
 
 import backend.History.DragAndDropCommand;
-import gui.elements.column.ColumnController;
-import gui.elements.goal.GoalController;
-import gui.elements.pack.PackController;
-import gui.elements.preview.PreviewController;
+import gui.controllers.ColumnController;
+import gui.controllers.GoalController;
+import gui.controllers.PackController;
+import gui.controllers.PreviewController;
 import interfaces.Card;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by rockuo on 4.5.17.

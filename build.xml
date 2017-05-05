@@ -1,120 +1,91 @@
-<?xml version="1.0" name="Solitaire" encoding="UTF-8" ?>
-<project>
-    <property name="build.dir" value="build/main"/>
+<!--<?xml version="1.0" name="Solitaire" encoding="UTF-8" ?>-->
+<project name="Solitaire-IJA" default="all" basedir="." xmlns:fx="javafx:com.sun.javafx.tools.ant">
     <property name="src.dir" value="src"/>
+    <property name="build.classes.dir" value="build"/>
+    <property name="build.jar.dir" value="dest-client"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="doc.dir" value="doc"/>
 
+    <!--<path id="libs.classpath">-->
+    <!--</path>-->
+    <!--<path id="project.classpath">-->
+        <!--<pathelement location="${src.dir}"/>-->
+    <!--</path>-->
 
-    <path id="libs.classpath">
-    </path>
-    <path id="project.classpath">
-        <pathelement location="${src.dir}"/>
-    </path>
+    <!--<path id="build.classpath">-->
+        <!--<pathelement location="${build.dir}"/>-->
+    <!--</path>-->
 
-    <path id="build.classpath">
-        <pathelement location="${build.dir}"/>
-    </path>
-
-
-    <target name="clean">
-        <delete dir="build"/>
+    <target name="all" depends="run">
+        <description>Main target</description>
     </target>
 
-    <target name="run" depends="compile">
-        <java fork="true" classname="org.junit.runner.JUnitCore">
-            <classpath refid="build.classpath" />
-            <classpath refid="libs.classpath" />
-        </java>
+    <target name="run" depends="jar">
+        <java jar="${build.jar.dir}/ija-client.jar" fork="true"/>
+    </target>
+
+    <target name="jar" depends="compile, docs">
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="lib/ant-javafx.jar"/>
+        <fx:application id="SolitaireID" name="JavaFXSolitaire" mainClass="gui.Main"/>
+        <fx:resources id="appRes">
+            <fx:fileset dir="${build.jar.dir}" includes="ija-client.jar"/>
+        </fx:resources>
+        <fx:jar destfile="${build.jar.dir}/ija-client.jar" >
+            <fx:application refid="SolitaireID"/>
+            <fx:resources  refid="appRes"/>
+            <fileset dir="${build.classes.dir}"/>
+        </fx:jar>
+        <echo message = "JAR created!" />
     </target>
 
     <target name="compile" depends="clean">
-        <mkdir dir="${build.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
-            <classpath refid="libs.classpath"/>
+        <mkdir dir="${build.classes.dir}"/>
+        <mkdir dir="${build.jar.dir}"/>
+        <mkdir dir="${doc.dir}"/>
+        <unzip src="${lib.dir}/images.zip" dest="${build.classes.dir}/images"/>
+        <!--<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">-->
+            <!--<classpath refid="libs.classpath"/>-->
+        <!--</javac>-->
+        <javac includeantruntime="false"
+               srcdir="${src.dir}"
+               destdir="${build.classes.dir}"
+               fork="yes"
+               executable="javac"
+               source="1.8"
+               debug="on">
         </javac>
+
+        <echo message = "Successfuly compiled!" />
+
     </target>
 
-
-</project>
-
-
-
-
-<property name="src.dir" value="src"/>
-<property name="build.classes.dir" value="build"/>
-<property name="build.dest.dir" value="dest-client"/>
-<property name="lib.dir" value="lib"/>
-<property name="doc.dir" value="doc"/>
-<property name="out.dir" value="out"/>
-
-<target name="all" depends="run">
-    <description>Main target</description>
-</target>
-
-<target name="run" depends="jar">
-    <java jar="${build.dest.dir}/ija-client.jar" fork="true" classpath="lib.classpath"/>
-</target>
-
-
-<target name="jar" depends="compile, docs">
-    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="lib/ant-javafx.jar"/>
-    <fx:application id="SolitaireID" name="JavaFXSolitaire" mainClass="solitaire.gui.MainBoard"/>
-    <fx:resources id="appRes">
-        <fx:fileset dir="${build.dest.dir}" includes="ija-client.jar"/>
-    </fx:resources>
-    <fx:jar destfile="${build.dest.dir}/ija-client.jar" >
-        <fx:application refid="SolitaireID"/>
-        <fx:resources  refid="appRes"/>
-        <fileset dir="${build.classes.dir}"/>
-    </fx:jar>
-    <echo message = "JAR created!" />
-</target>
-
-<target name="clean">
-    <mkdir dir="${build.classes.dir}" />
-    <mkdir dir="${build.dest.dir}" />
-    <mkdir dir="${doc.dir}" />
-    <delete includeemptydirs="true">
-        <fileset dir="${build.classes.dir}" includes="**/*" />
-        <fileset dir="${build.dest.dir}" includes="**/*" />
-        <fileset dir="${doc.dir}" includes="**/*" />
-    </delete>
-</target>
-
-<target name="makedir">
-    <mkdir dir="${build.classes.dir}"/>
-    <mkdir dir="${build.dest.dir}"/>
-    <echo message = "Folders created!" />
-</target>
-
-<target name="compile" depends="clean, makedir">
-    <copy todir="${build.classes.dir}/images">
-        <fileset dir="${lib.dir}/images"/>
-    </copy>
-    <copy todir="${build.classes.dir}/solitaire/gui">
-        <fileset file="${src.dir}/solitaire/gui/SolitaireBoard.fxml"/>
-        <fileset file="${src.dir}/solitaire/gui/MainBoard.fxml"/>
-    </copy>
-
-    <javac includeantruntime="false"
-           srcdir="${src.dir}"
-           destdir="${build.classes.dir}"
-           fork="yes"
-           executable="javac"
-           source="1.8"
-           debug="on">
-    </javac>
-
-    <echo message = "Successfuly compiled!" />
-
-</target>
-
-<target name = "docs">
-    <javadoc packagenames="solitaire.*" sourcepath="${src.dir}" destdir = "doc" version = "true" windowtitle = "Solitaire - IJA">
+    <target name = "docs">
+        <javadoc packagenames="*" sourcepath="${src.dir}" destdir = "doc" version = "true" windowtitle = "Solitaire - IJA">
         <doctitle><![CDATA[Solitaire]]></doctitle>
-        <group title = "GUI" packages = "solitaire.gui.*"/>
-        <group title = "Interfaces" packages = "solitaire.model.*"/>
-        <group title = "Game logic" packages = "solitaire.implementation.*"/>
-    </javadoc>
-    <echo message = "java doc has been generated!" />
-</target>
+        <!--<group title = "GUI" packages = "solitaire.gui.*"/>-->
+        <group title = "Interfaces" packages = "interfaces.*"/>
+        <!--<group title = "Game logic" packages = "solitaire.implementation.*"/>-->
+        </javadoc>
+        <echo message = "java doc has been generated!" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${build.classes.dir}"/>
+        <delete dir="${build.jar.dir}"/>
+        <delete dir="${doc.dir}"/>
+    </target>
+
 </project>
+
+
+
+
+
+
+
+
+
+
+
+
+

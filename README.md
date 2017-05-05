@@ -27,4 +27,4 @@ Návrh kariet (zatiaľ na rýchlo orezať a pridať ), navrhnúť vzhľad pozadi
 /usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar
 
 #cesta:
-/run/media/rockuo/DATA/skola/IJA/IJA-projekt/out/production/IJA-projekt gui.klondike.Main
+/run/media/rockuo/DATA/skola/IJA/IJA-projekt/out/production/IJA-projekt gui.Main

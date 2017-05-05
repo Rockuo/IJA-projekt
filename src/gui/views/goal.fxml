@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+
+<?import gui.controllers.CardController?>
+<fx:root type="javafx.scene.layout.AnchorPane" fx:id="goal"
+         maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0"
+         prefHeight="90.0" prefWidth="70.0" style="-fx-background-radius: 10;"
+         xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <CardController fx:id="cardImage" maxHeight="-Infinity" maxWidth="-Infinity"
+                        minHeight="-Infinity" minWidth="-Infinity" opacity="1" prefHeight="92.0" prefWidth="75.0"
+                        style="-fx-background-radius: 10; -fx-border-radius: 10;"/>
+    </children>
+</fx:root>
