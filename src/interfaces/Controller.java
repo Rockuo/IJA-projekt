@@ -1,10 +1,19 @@
 package interfaces;
 
 /**
- * Created by rockuo on 3.5.17.
+ * Interface pro každý kontroller
+ *
+ * @author xbures29+xhalam14
  */
 public interface Controller {
+    /**
+     * Aktualizuje vzhled elementu
+     */
     void updateView();
 
-    void resize(boolean big);
+    /**
+     * Získá data potřebná pro uložení.
+     * @return Data
+     */
+    Object save();
 }

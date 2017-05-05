@@ -49,7 +49,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * Třída ovládající sloupec a jeho zobrazování
  *
+ * @author xbures29+xhalam14
  */
 public class ColumnController extends AnchorPane implements Controller {
     private CardStack workingPack;
@@ -57,6 +59,9 @@ public class ColumnController extends AnchorPane implements Controller {
     private GameController game;
     private ArrayList<CardController> cards;
 
+    /**
+     * Vykreslí sloupec a nastavé event handlery
+     */
     public ColumnController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/views/column.fxml"));
         fxmlLoader.setController(this);
@@ -72,19 +77,29 @@ public class ColumnController extends AnchorPane implements Controller {
         this.cards = new ArrayList<>();
     }
 
-    public void confWorkingPack(CardStack workingPack, GameController game) {
+    void confWorkingPack(CardStack workingPack, GameController game) {
         this.workingPack = workingPack;
         this.game = game;
     }
 
+    @Override
     public CardStack save() {
         return this.workingPack;
     }
 
+    /**
+     * Získej Backend Sloupce
+     * @return Backend Sloupce
+     */
     public CardStack getBackend() {
         return this.workingPack;
     }
 
+    /**
+     * Vnitřní metoda, používat jen výjimečně
+     * Přidá kartu bez dalšího ošetřování
+     * @param card Karta
+     */
     public void putForce(Card card) {
         this.workingPack.putForce(card);
     }
@@ -109,10 +124,7 @@ public class ColumnController extends AnchorPane implements Controller {
         this.hideHint();
     }
 
-    @Override
-    public void resize(boolean big) {
 
-    }
 
     private void dragFrom(MouseEvent event) {
         if (this.workingPack.isEmpty()) return;
@@ -140,10 +152,18 @@ public class ColumnController extends AnchorPane implements Controller {
         event.consume();
     }
 
+    /**
+     * Získá vrchní kartu
+     * @return Karta
+     */
     public Card top() {
         return this.workingPack.get();
     }
 
+    /**
+     * Získá otočené karty ve sloupci
+     * @return List otočených karet
+     */
     public ArrayList<Card> getAllVisibleCards() {
         ArrayList<Card> cards = new ArrayList<>();
         for (int i = 0; i < this.workingPack.size(); i++) {
@@ -155,12 +175,18 @@ public class ColumnController extends AnchorPane implements Controller {
         return cards;
     }
 
-
+    /**
+     * Zobraz nápovědu
+     */
     public void showHint() {
         if (this.getChildren().size() > 0)
             this.getChildren().get(this.getChildren().size() - 1).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #07ff1a;");
     }
 
+    /**
+     * Zobraz nápovědu
+     * @param card po kterou kartu se napovídá
+     */
     public void showHint(Card card) {
         for (int i = this.cards.size()-1; i>=0; i--) {
             this.cards.get(i).setStyle("-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #25ff20;");
@@ -170,7 +196,10 @@ public class ColumnController extends AnchorPane implements Controller {
         }
     }
 
-    public void hideHint() {
+    /**
+     * Schovej nápovědu
+     */
+    private void hideHint() {
         for (Node child : this.getChildren()) {
             child.setStyle("-fx-background-radius: 10; -fx-border-radius: 10;");
         }

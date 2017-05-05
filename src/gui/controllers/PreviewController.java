@@ -99,11 +99,6 @@ public class PreviewController extends AnchorPane implements Controller {
         this.hideHint();
     }
 
-    @Override
-    public void resize(boolean big) {
-
-    }
-
     public CardDeck getDeck() {
         return this.preview;
     }

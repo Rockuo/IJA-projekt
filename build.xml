@@ -14,25 +14,11 @@
     </target>
 
 
-    <target name="run" depends="jar">
+    <target name="run" depends="compile">
         <java jar="${build.jar.dir}/ija-client.jar" fork="true"/>
     </target>
 
-    <target name="jar" depends="compile, doc">
-        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant"
-                 classpath="lib/ant-javafx.jar"/>
-        <fx:application id="SolitaireID" name="JavaFXSolitaire" mainClass="gui.Main"/>
-        <fx:resources id="appRes">
-            <fx:fileset dir="${build.jar.dir}" includes="ija-client.jar"/>
-        </fx:resources>
-        <fx:jar destfile="${build.jar.dir}/ija-client.jar">
-            <fx:application refid="SolitaireID"/>
-            <fx:resources refid="appRes"/>
-            <fileset dir="${build.classes.dir}"/>
-        </fx:jar>
-    </target>
-
-    <target name="compile" depends="clean">
+    <target name="compile" depends="clean,doc">
         <mkdir dir="${build.classes.dir}"/>
         <mkdir dir="${build.jar.dir}"/>
         <mkdir dir="${doc.dir}"/>
@@ -46,6 +32,18 @@
                source="1.8"
                debug="on">
         </javac>
+
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="lib/ant-javafx.jar"/>
+        <fx:application id="SolitaireID" name="JavaFXSolitaire" mainClass="gui.Main"/>
+        <fx:resources id="appRes">
+            <fx:fileset dir="${build.jar.dir}" includes="ija-client.jar"/>
+        </fx:resources>
+        <fx:jar destfile="${build.jar.dir}/ija-client.jar">
+            <fx:application refid="SolitaireID"/>
+            <fx:resources refid="appRes"/>
+            <fileset dir="${build.classes.dir}"/>
+        </fx:jar>
     </target>
 
     <target name="doc">

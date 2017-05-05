@@ -28,16 +28,19 @@ public class MainController {
     private ImageView mainImage;
     private GameFourController game4;
 
-    private int gameCount = 0;
-
-    public void initialize() throws IOException, ClassNotFoundException {
+    /**
+     * Zobrazí Celý solitaire
+     */
+    public void initialize() {
         AbstractFactorySolitaire factory = new FactoryKlondike();
-        //        GameFourController fGame = new GameFourController();
         GameController fGame = new GameController();
         fGame.configure(factory, 1, this);
         this.gamePane.getChildren().add(fGame);
     }
 
+    /**
+     * Prvotní vykreslení hry je dokončeno
+     */
     public void initDone() {
         this.stage.maxHeightProperty().setValue(530);
         this.stage.maxWidthProperty().setValue(768);
@@ -45,7 +48,7 @@ public class MainController {
         this.stage.minWidthProperty().setValue(768);
     }
 
-    public void newTab(GameController game) {
+    void newTab(GameController game) {
         if (!expanded) {
             this.game4 = new GameFourController(this);
             this.expanded = true;
@@ -63,10 +66,9 @@ public class MainController {
                 return;
             }
         }
-        //todo
     }
 
-    public void newGame(int id) {
+    void newGame(int id) {
         GameController emptyGame = new GameController();
         emptyGame.configure(new FactoryKlondike(),id,this);
         if (!expanded) {
@@ -77,7 +79,7 @@ public class MainController {
         }
     }
 
-    public void openGame(int id) throws IOException, ClassNotFoundException {
+    void openGame(int id) throws IOException, ClassNotFoundException {
         File file = fileChooser.showOpenDialog(this.stage);
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -94,7 +96,7 @@ public class MainController {
         }
     }
 
-    public void saveGame(GameController gameController) throws IOException {
+    void saveGame(GameController gameController) throws IOException {
         File file = fileChooser.showSaveDialog(this.stage);
         if (file != null) {
             FileOutputStream fileOut = new FileOutputStream(file);
@@ -105,7 +107,7 @@ public class MainController {
         }
     }
 
-    public void exitGame(int id) {
+    void exitGame(int id) {
         if (!expanded) {
             System.exit(0);
         } else {
@@ -126,6 +128,10 @@ public class MainController {
         this.stage.minWidthProperty().setValue(768);
     }
 
+    /**
+     * Nastaví stage hry
+     * @param stage primární stage hry
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
