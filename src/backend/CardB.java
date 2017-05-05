@@ -5,7 +5,9 @@ import interfaces.Card;
 import java.util.*;
 
 /**
+ * Třída implementujíci rozhraní Card
  *
+ * @author xbures29+xhalam14
  */
 public class CardB implements Card {
 

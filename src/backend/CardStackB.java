@@ -8,11 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+/**
+ * Třída implementujíci rozhraní CardStack
+ *
+ * @author xbures29+xhalam14
+ */
 public class CardStackB extends CardDeckB implements CardStack {
 
     private boolean ignoreFirst = false;
 
-    public CardStackB(boolean ignoreFirst){
+    private CardStackB(boolean ignoreFirst){
         this.stack = new Stack<Card>();
         this.ignoreFirst = ignoreFirst;
     }

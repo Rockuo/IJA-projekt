@@ -7,17 +7,29 @@ import interfaces.CardStack;
 
 import java.util.*;
 
+/**
+ * Třída implementujíci rozhraní CardDeck
+ *
+ * @author xbures29+xhalam14
+ */
 public class CardDeckB implements CardDeck {
 
     protected Stack<Card> stack;
     private int maxSize;
     private Card.Color color = null;
 
+    /**
+     * Vytvoří základní balíček karet
+     */
     public CardDeckB() {
         this.stack = new Stack<>();
         this.maxSize = 52;
     }
 
+    /**
+     * Vytvoří balíček karet
+     * @param maxSize počet karet v balíku
+     */
     public CardDeckB(int maxSize) {
         int byColor = maxSize / 4;
         this.maxSize = maxSize;
@@ -35,6 +47,11 @@ public class CardDeckB implements CardDeck {
         }
     }
 
+    /**
+     * Vytvoří balíček karet
+     * @param maxSize počet karet v balíku
+     * @param color barva karet v balíku
+     */
     public CardDeckB(int maxSize, Card.Color color) {
         this.maxSize = maxSize;
         this.stack = new Stack<Card>();

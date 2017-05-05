@@ -9,10 +9,15 @@ import javafx.util.Pair;
 import java.util.Optional;
 
 /**
- * Created by Marry on 04.05.2017.
+ * Třída pro vypisovaní upozornění
  */
 public class AlertManager {
 
+    /**
+     * Statická metoda pro vypsání upozornění
+     * @param tittle nadpis upozornění
+     * @param text text upozornění
+     */
     public static void alertPopUp(String tittle, String text){
 
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -27,6 +32,13 @@ public class AlertManager {
         alert.showAndWait();
     }
 
+    /**
+     * Statická metoda pro vypsání upozornění
+     * @param tittle nadpis upozornění
+     * @param text text upozornění
+     * @param buttonType typ tlačítka
+     * @param gameController kontroler pro hru
+     */
     public static void alertPopUpNew(String tittle, String text, String buttonType, GameController gameController){
 
         Dialog<Pair<String, String>> dialog = new Dialog<>();
