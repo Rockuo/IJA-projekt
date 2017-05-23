@@ -254,7 +254,7 @@ public class GameController extends AnchorPane implements Controller{
     }
 
     public void helpHandler(ActionEvent event) {
-        AlertManager.alertPopUp("About", "Pravidlá hry: \n\tHra se hrá se standardním balíčkem obsahujícím 52 karet.\n" +
+        AlertManager.alertPopUp("Help", "Pravidlá hry: \n\tHra se hrá se standardním balíčkem obsahujícím 52 karet.\n" +
                 "Cílem hry je uložit všechny katry do cílových políček\n" +
                 "podle barvy a od nejmenší karty (A) po nejvěčší kartu (K). \n");
     }
